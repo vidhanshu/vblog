@@ -1,0 +1,28 @@
+.aboutHeader {
+    overflow: hidden;
+    lottie-player {
+        -o-object-fit: cover;
+    }
+}
+
+.aboutContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    .about-write {
+        align-self: flex-start;
+    }
+    .about-edit {
+        align-self: flex-end;
+    }
+    .about-publish {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width:1000px) {
+    .aboutContainer {
+        flex-direction: column;
+    }
+}

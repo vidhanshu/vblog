@@ -1,0 +1,75 @@
+@import "../../global.scss";
+.footer {
+    padding: 40px var(--padding) 0px;
+    background-color: var(--primary);
+    border-radius: 100px 0px 0px 0px;
+    .footerTop {
+        display: flex;
+        justify-content: space-between;
+        .footerLogo {
+            flex: 4;
+            font-size: 25px;
+            color: white;
+        }
+        .socialIcons {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            a {
+                color: white;
+                font-size: 30px;
+                transition: .2s ease-out;
+                &:hover {
+                    transform: translateY(-10px) scale(1.2);
+                }
+                &:nth-child(1):hover {
+                    color: rgb(0, 255, 238);
+                }
+                &:nth-child(2):hover {
+                    color: rgb(255, 0, 157);
+                }
+                &:nth-child(3):hover {
+                    color: rgb(241, 41, 41);
+                }
+                &:nth-child(4):hover {
+                    color: rgb(0, 255, 98);
+                }
+                &:nth-child(5):hover {
+                    color: rgb(255, 208, 0);
+                }
+                &:nth-child(6):hover {
+                    color: rgb(255, 0, 183);
+                }
+            }
+        }
+        @media (max-width:700px) {
+            .socialIcons {
+                min-width: 200px;
+                a {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    .footerContent {
+        min-height: 100px;
+        color: white;
+        position: relative;
+        .footerContentBottom {
+            position: absolute;
+            bottom: 10px;
+            right: 0px;
+            .heart {
+                fill: red;
+            }
+        }
+    }
+    .footerBottom {
+        color: white;
+        font-size: 15px;
+        font-weight: 200;
+        padding: 10px 0px;
+    }
+}

@@ -1,0 +1,39 @@
+.favBlog {
+    display: flex;
+    gap: 10px;
+    .favTop {
+        .favTopContent {
+            display: flex;
+            align-items: center;
+        }
+        .lightText {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            width: fit-content;
+        }
+        .boldTitle-ssm {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            width: fit-content;
+        }
+        img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+    }
+    .favBlogImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+        }
+    }
+}

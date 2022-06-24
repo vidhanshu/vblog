@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 100%;
+    @media (max-width: 700px) {
+        $padding: 10px;
+    }
+}
+
+:root {
+    --hoverText: #e2e2e2;
+    --textColor: #525252;
+    --logoSize: 20px;
+    --primary: #5D3FD3;
+    --borderColor: #DBDBDB;
+    --padding: 50px;
+}
+
+@media (max-width:700px) {
+     :root {
+        --padding: 20px;
+    }
+}
+
+.hoverText {
+    color: var(--textColor);
+    transition: .2s ease-in;
+    border-radius: 3px;
+    padding: 3px;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--hoverText);
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.motto {
+    font-size: 80px;
+    font-weight: 500;
+    font-family: 'Fredoka One', cursive;
+    color: white;
+}
+
+.motto-black {
+    font-size: 40px;
+    font-weight: 900;
+    color: rgb(0, 0, 0);
+}
+
+@media (max-width: 1235px) {
+    .motto {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .motto {
+        font-size: 50px;
+    }
+    .motto-black {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 870px) {
+    .motto {
+        font-size: 40px;
+    }
+}
+
+.dot {
+    margin: 0px 10px;
+}
+
+.logoTitle {
+    font-size: var(--logoSize);
+    color: var(--textColor);
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+
+.lightText {
+    color: var(--textColor);
+    font-size: 13px;
+}
+
+.semiBoldTitle-sm {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.lightTitle-ssm-grey {
+    font-size: 15px;
+    font-weight: normal;
+    color: var(--textColor);
+}
+
+.semiBoldTitle-sm-grey {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--textColor);
+}
+
+.semiBoldTitle-sm {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.boldTitle-sm {
+    font-size: 20px;
+}
+
+.boldTitle-ssm {
+    font-size: 18px;
+}
+
+.borderedTitle {
+    font-size: 20px;
+    border-top: .2px solid var(--textColor);
+    border-bottom: .2px solid var(--textColor);
+    text-align: center;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 0px 10px;
+}
+
+.border {
+    border: 1px solid var(--borderColor);
+    border-radius: 5px;
+}
+
+.mt {
+    margin-top: 10px;
+}
+
+.mb {
+    margin-bottom: 10px;
+}
+
+.ml {
+    margin-left: 10px;
+}
+
+.ml-sm {
+    margin-left: 20px;
+}
+
+.mr {
+    margin-left: 10px;
+}
+
+.ma {
+    margin: 10px;
+}
+
+.mtb {
+    margin: 10px 0px;
+}
+
+.mtb-sm {
+    margin: 20px 0px;
+}
+
+.mlr {
+    margin: 0px 10px;
+}
+
+.circular-btn {
+    border-radius: 20px;
+    background-color: var(--primary);
+    padding: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 5px;
+    border: .1px solid var(--hoverText);
+    font-size: 20px;
+}
+
+.btn {
+    border: none;
+    background-color: var(--primary);
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btn-fw {
+    border: none;
+    background-color: var(--primary);
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 10px 0px;
+    cursor: pointer;
+    width: 100%;
+}

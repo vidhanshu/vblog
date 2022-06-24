@@ -1,0 +1,46 @@
+@import "../../global.scss";
+.nav {
+    padding: 10px var(--padding);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.425);
+    transition: .2s all;
+    backdrop-filter: blur(10px);
+    z-index: 999;
+}
+
+.logo {
+    flex: 1;
+    font-size: var(--logoSize);
+    color: var(--textColor);
+}
+
+.options {
+    display: flex;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    li {
+        list-style: none;
+    }
+}
+
+.profile {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 700px) {
+    .options {
+        display: none;
+    }
+}

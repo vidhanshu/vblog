@@ -1,0 +1,10 @@
+.containerWithSidebar {
+    display: flex;
+    gap: 20px;
+}
+
+@media (max-width: 1235px) {
+    .containerWithSidebar {
+        flex-direction: column-reverse;
+    }
+}

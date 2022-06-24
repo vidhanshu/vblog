@@ -1,0 +1,28 @@
+@import "../../global.scss";
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary);
+    min-height: 300px;
+    padding: 20px var(--padding);
+    .motto {
+        flex: 1;
+    }
+    .headerImage {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        overflow: hidden;
+        img {
+            width: 80%;
+            height: 80%;
+        }
+    }
+    @media (max-width: 700px) {
+        .headerImage {
+            display: none;
+        }
+    }
+}
