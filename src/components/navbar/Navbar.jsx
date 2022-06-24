@@ -12,7 +12,7 @@ function Navbar() {
     })
   }, []);
 
-  const color = scrollY <= bp ? { color: "white" } : {};
+  const color = scrollY <= bp ? { color: "white" } : { color: "black" };
 
   return (
     <nav className="nav" style={scrollY <= bp ? { backgroundColor: "var(--primary)" } : {}}>

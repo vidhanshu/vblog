@@ -15,6 +15,7 @@
     flex: 1;
     font-size: var(--logoSize);
     color: var(--textColor);
+    user-select: none;
 }
 
 .options {
@@ -39,7 +40,13 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
+    .options {
+        flex: 2;
+    }
+}
+
+@media (max-width: 900px) {
     .options {
         display: none;
     }

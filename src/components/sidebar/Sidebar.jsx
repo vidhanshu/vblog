@@ -8,6 +8,14 @@ function Sidebar() {
         "javascript",
         "programming",
         'c++',
+        "productivity",
+        "javascript",
+        "programming",
+        'c++',
+        "productivity",
+        "javascript",
+        "programming",
+        'c++',
         "productivity"
     ]
     const recentlyWatchBlogs = [
