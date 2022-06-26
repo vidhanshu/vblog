@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px 0px;
+    max-width: 800px;
+    background-color:var(--secondary);
     .bcWrapper {
         display: flex;
         justify-content: space-between;

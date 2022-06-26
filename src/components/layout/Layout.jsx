@@ -33,12 +33,9 @@ function Layout({ children }) {
 
             <div className="menu-btn" onClick={() => setNav(e => !e)}>
                 {
-                    nav ?
-                        <VscChromeClose />
-                        : <FiMenu />
+                    nav ? <VscChromeClose /> : <FiMenu />
                 }
             </div>
-            <div className="menu"></div>
             <Navbar />
             <div>
                 {children}

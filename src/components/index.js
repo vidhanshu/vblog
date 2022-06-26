@@ -9,4 +9,5 @@ import FavBlog from "./favoriteblogcard/FavBlog"
 import CustomEditor from "./Editor/Editor.jsx"
 import Card from "../components/card/Card";
 import EditProfile from "./editprofile/EditProfile"
-export { Divider, Footer, Header, Layout, Section, BlogCard, Sidebar, FavBlog, CustomEditor, Card, EditProfile };
+import BlogPreview from "./blog preview/BlogPreview"
+export { Divider, Footer, Header, Layout, Section, BlogCard, Sidebar, FavBlog, CustomEditor, Card, EditProfile, BlogPreview };

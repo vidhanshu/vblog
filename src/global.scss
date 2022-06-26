@@ -1,29 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    font-size: 100%;
-    @media (max-width: 700px) {
-        $padding: 10px;
-    }
-}
-
-:root {
-    --hoverText: #e2e2e2;
-    --textColor: #525252;
-    --logoSize: 20px;
-    --primary: #5D3FD3;
-    --borderColor: #DBDBDB;
+.common {
     --padding: 50px;
 }
 
+.light-theme {
+    --hoverText: #e2e2e2;
+    --tag-color: #e2e2e2;
+    --textColor: #525252;
+    --secondary-text-color: rgb(0, 0, 0);
+    --logoSize: 20px;
+    --primary: #5D3FD3;
+    --borderColor: #DBDBDB;
+    --secondary: white;
+    --secondary-box-shadow-color: rgba(20, 20, 20, 0.4);
+    background-color: var(--secondary);
+}
+
+.dark-theme {
+    --hoverText: #e2e2e2;
+    --tag-color: #151971;
+    --textColor: #ffffff;
+    --secondary-text-color: rgb(255, 255, 255);
+    --logoSize: 20px;
+    --primary: #000000;
+    --borderColor: #ffffff;
+    --secondary: rgb(0, 23, 62);
+    --secondary-box-shadow-color: rgba(255, 255, 255, 0.4);
+    background-color: var(--secondary);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 100%;
+    background-color: var(--se);
+
+    @media (max-width: 700px) {
+        .common {
+            --padding: 20px;
+        }
+    }
+}
+
 @media (max-width:700px) {
-     :root {
+    :root {
         --padding: 20px;
     }
 }
@@ -34,6 +60,7 @@ body {
     border-radius: 3px;
     padding: 3px;
     cursor: pointer;
+
     &:hover {
         background-color: var(--hoverText);
     }
@@ -47,7 +74,7 @@ a {
     font-size: 80px;
     font-weight: 500;
     font-family: 'Fredoka One', cursive;
-    color: white;
+    color: var(--hoverText);
 }
 
 .motto-black {
@@ -66,6 +93,7 @@ a {
     .motto {
         font-size: 50px;
     }
+
     .motto-black {
         font-size: 26px;
     }
@@ -89,6 +117,7 @@ a {
 }
 
 .sectionTitle {
+    color: var(--secondary-text-color);
     font-size: 2rem;
     font-weight: normal;
     margin-bottom: 40px;
@@ -100,6 +129,7 @@ a {
 }
 
 .semiBoldTitle-sm {
+    color: var(--secondary-text-color);
     font-size: 20px;
     font-weight: 400;
 }
@@ -117,19 +147,23 @@ a {
 }
 
 .semiBoldTitle-sm {
+    color: var(--secondary-text-color);
     font-size: 20px;
     font-weight: 400;
 }
 
 .boldTitle-sm {
+    color: var(--secondary-text-color);
     font-size: 20px;
 }
 
 .boldTitle-ssm {
+    color: var(--secondary-text-color);
     font-size: 18px;
 }
 
 .borderedTitle {
+    color: var(--secondary-text-color);
     font-size: 20px;
     border-top: .2px solid var(--textColor);
     border-bottom: .2px solid var(--textColor);
@@ -218,4 +252,12 @@ a {
     margin: 10px 0px;
     cursor: pointer;
     width: 100%;
+}
+
+.p10 {
+    padding: 10px;
+}
+
+.p20 {
+    padding: 20px;
 }
