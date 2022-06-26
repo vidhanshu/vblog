@@ -8,9 +8,8 @@ function Write() {
 
     return (
         <Layout>
-            <Section>
-            <h1 className="motto-black mb">Start writing blog!</h1>
-            <button className="circular-btn mb">
+            <Section title="Start writing a blog...">
+            <button className="circular-btn mb-1">
                 publish
             </button>
                 <div>

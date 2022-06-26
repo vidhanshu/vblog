@@ -1,37 +1,6 @@
 .blogContainer {
     display: flex;
-    .profileDetails {
-        border-left: .2px solid var(--borderColor);
-        flex: 1;
-        padding: 50px 20px;
-        .profileImage {
-            width: 100%;
-            img {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-            }
-        }
-        .profileBlogs {
-            flex: 3;
-            padding: 20px 20px 20px 0px;
-        }
-        .profileFollow {
-            display: flex;
-            align-items: center;
-            .socialIcons {
-                min-width: 200px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-        .profileFavoriteContainer {
-            .profileFavorite {
-                height: 600px;
-                padding: 10px;
-                overflow-y: auto;
-            }
-        }
+    @media (max-width: 900px) {
+        flex-direction: column-reverse;
     }
 }

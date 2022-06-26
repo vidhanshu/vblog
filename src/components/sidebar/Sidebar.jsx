@@ -1,8 +1,10 @@
 import "./sidebar.scss"
 import { AiOutlineSearch } from "react-icons/ai"
 import Tag from "../tag/Tag"
+import FavBlog from "../favoriteblogcard/FavBlog"
 import { Link } from "react-router-dom"
 import React from "react"
+import Divider from "../divider/Divider"
 function Sidebar() {
     const recommended = [
         "javascript",
@@ -36,7 +38,7 @@ function Sidebar() {
                     <input type="text" placeholder="Search a blog." />
                 </div>
                 <div className="recommendedTagsContainer">
-                    <span className="boldTitle">Recommended tags</span>
+                    <span className="txtSB-2">Recommended tags</span>
                     <div className="recommendedTag">
                         {
                             recommended.map((tag, idx) => <Tag key={idx}>{tag}</Tag>)
@@ -44,10 +46,10 @@ function Sidebar() {
                     </div>
                 </div>
                 <div className="recentlyWatchedBlogsContainer">
-                    <span className="boldTitle">Previously watched blogs</span>
+                    <span className="txtSB-2">Previously watched blogs</span>
                     <div className="recentlyWatchedBlogs">
                         {
-                            recentlyWatchBlogs.map((blog, idx) => (<React.Fragment key={idx}><Link to="/">{blog}</Link><br /></React.Fragment>))
+                            recentlyWatchBlogs.map((blog, idx) => (<Link to="/blog">{<FavBlog/>}<Divider/></Link>))
                         }
                     </div>
                 </div>

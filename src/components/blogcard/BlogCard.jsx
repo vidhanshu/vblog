@@ -1,7 +1,7 @@
 import "./blogCard.scss"
 import Tag from "../tag/Tag"
 import Divider from "../divider/Divider"
-
+import {Link} from "react-router-dom"
 function BlogCard() {
     const tags = [
         "javascript",
@@ -24,16 +24,16 @@ function BlogCard() {
                         <div className="bcProfile">
                             <img src="https://th.bing.com/th/id/OIP.jryuUgIHWL-1FVD2ww8oWgHaHa?pid=ImgDet&rs=1" alt="" />
                         </div>
-                        <h4 className="boldTitle-sm">
+                        <h4 className="txtB-1">
                             Lorem ipsum dolor.
                         </h4>
                         <span className="dot">.</span>
-                        <p className="lightText">
+                        <p className="txtL-3">
                             3m ago
                         </p>
                     </div>
                     <div className="bcMiddle">
-                        <p className="bcBlogContent">
+                        <p className="bcBlogContent txtL-2">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam, quaerat corporis adipisci perspiciatis dignissimos error beatae voluptatum. Dicta harum eum non provident sint. Omnis, doloremque aut pariatur inventore assumenda cupiditate?
                         </p>
                     </div>
@@ -47,7 +47,8 @@ function BlogCard() {
                     Tags
                 }
                 <span className="dot">.</span>
-                <span className="lightText">2m to read</span>
+                <span className="txtL-3">2m to read</span>
+                <Link to="/blog" className="btn-sqr p-1 ma-1 txt-3">read</Link>
             </div>
             <Divider theme="dark" />
         </div>

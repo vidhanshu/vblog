@@ -2,13 +2,13 @@ import "./favblog.scss"
 
 function FavBlog() {
     return (
-        <div className='favBlog mtb-sm'>
+        <div className='favBlog mtb-2'>
             <div className="favTop">
                 <div className="favTopContent">
                     <img src="https://th.bing.com/th/id/OIP.jryuUgIHWL-1FVD2ww8oWgHaHa?pid=ImgDet&rs=1" alt="" />
-                    <p className="lightText ml">Lorem ipsum dolor sit amet.</p>
+                    <p className="txtL-3 ml">Lorem ipsum dolor sit amet.</p>
                 </div>
-                <h4 className="boldTitle-ssm mtb">
+                <h4 className="txtB-2 mtb-1">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, veritatis voluptas?
                 </h4>
             </div>

@@ -41,7 +41,7 @@ function EditProfile() {
             </div>
 
             <div className="update-fields">
-                <p className="boldTitle-sm">Personal details.</p>
+                <p className="txtB-2">Personal details.</p>
                 <div className="updateField">
                     <input type="text" className="input" placeholder="Name" />
                     <button className="btn">
@@ -56,7 +56,7 @@ function EditProfile() {
                 </div>
                 <Divider />
                 <div className="updateField">
-                    <p className="boldTitle-sm">Auth details.</p>
+                    <p className="txtB-2">Auth details.</p>
                     <input type="password" className="input" placeholder="Password" />
                     <button className="btn">
                         <AiOutlineUpload />
@@ -65,7 +65,7 @@ function EditProfile() {
 
             </div>
             <div className="update-fields">
-                <p className="boldTitle-sm">Social media details.</p>
+                <p className="txtB-2">Social media details.</p>
                 <div className="updateField">
                     <input type={"url"} className="input" placeholder="Facebook" />
                     <button className="btn">

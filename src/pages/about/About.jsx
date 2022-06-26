@@ -1,14 +1,15 @@
 import "./about.scss"
 import { Layout, Section, Card } from "../../components"
-
+import {useNavigate} from "react-router-dom"
 function About() {
+    const navigate = useNavigate();
     return (
         <Layout>
             <div className="aboutHeader">
                 <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_oen2kc.json" background="transparent" speed="1" loop autoplay></lottie-player>
             </div>
             <Section title="About">
-                <h1 className="motto-black mb">Start writing blog, In just 3 steps.</h1>
+                <h1 className="txtB-1xx mtb-2">Start writing blog, In just 3 steps.</h1>
                 <div className="aboutContainer">
                     <div className="about-write">
                         <Card>
@@ -35,7 +36,7 @@ function About() {
                         </Card>
                     </div>
                 </div>
-                <button className="circular-btn mtb">Write a blog</button>
+                <button className="circular-btn mtb-1" onClick={()=>navigate('/blog')}>Write a blog</button>
             </Section>
         </Layout>
     )

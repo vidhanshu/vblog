@@ -6,14 +6,7 @@
             display: flex;
             align-items: center;
         }
-        .lightText {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            width: fit-content;
-        }
-        .boldTitle-ssm {
+        .txtB-2 {
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -22,6 +15,7 @@
         }
         img {
             width: 20px;
+            margin-right:10px;
             height: 20px;
             border-radius: 50%;
         }

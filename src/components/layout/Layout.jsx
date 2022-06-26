@@ -24,14 +24,14 @@ function Layout({ children }) {
             animate="show"
             className='main'
         >
-            <ul className={nav ? "nav-bar-mobile-active" : "nav-bar-mobile"}>
+            <ul className={nav ? "nav-bar-mobile-active border" : "nav-bar-mobile border"}>
                 <Link to="/" ><li>HOME</li></Link>
                 <Link to="/about" ><li>ABOUT</li></Link>
                 <Link to="/write" ><li>WRITE</li></Link>
                 <Link to="/settings" ><li>SETTINGS</li></Link>
             </ul>
 
-            <div className="menu-btn" onClick={() => setNav(e => !e)}>
+            <div className="menu-btn border" onClick={() => setNav(e => !e)}>
                 {
                     nav ? <VscChromeClose /> : <FiMenu />
                 }

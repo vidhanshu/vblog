@@ -1,7 +1,10 @@
 import './navbar.scss'
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
+import { useGlobalContext } from '../../contexts/globalcontext';
+import { BsSun, BsMoon } from "react-icons/bs"
 function Navbar() {
+  const { setDark, dark } = useGlobalContext();
   const [scrollY, setScrollY] = useState('0');
 
   const bp = 60;
@@ -26,6 +29,9 @@ function Navbar() {
         <Link to="/settings" ><li style={color}>SETTINGS</li></Link>
       </ul>
       <div className="profile">
+        <div>
+          {dark ? <BsSun style={color} onClick={() => setDark(p => !p)} /> : <BsMoon style={color} onClick={() => setDark(p => !p)} />}
+        </div>
         <Link to="/profile" >
           <img src="https://th.bing.com/th/id/OIP.jryuUgIHWL-1FVD2ww8oWgHaHa?pid=ImgDet&rs=1" alt="profile" />
         </Link>

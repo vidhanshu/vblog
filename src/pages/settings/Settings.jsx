@@ -4,8 +4,7 @@ import { Layout, Section, EditProfile } from "../../components"
 function Settings() {
     return (
         <Layout>
-            <Section>
-                <h1 className="motto-black mb">Edit profile.</h1>
+            <Section title="Edit profile">
                 <EditProfile />
             </Section>
         </Layout>
