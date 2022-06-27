@@ -4,24 +4,36 @@
     flex-direction: column;
     gap: 20px 0px;
     max-width: 800px;
-    background-color:var(--secondary);
+    background-color: transparent;
     .bcWrapper {
         display: flex;
         justify-content: space-between;
         gap: 20px;
+
+        @media (max-width:700px) {
+            flex-direction: column-reverse;
+        }
+
         .bcBlogImage {
             display: flex;
             justify-content: center;
             align-items: flex-end;
+
+            @media (max-width:700px) {
+                justify-content: flex-start;
+            }
+
             img {
                 width: 100px;
                 height: 100px;
                 border-radius: 5px;
             }
         }
+
         .bcTop {
             display: flex;
             align-items: center;
+
             h4 {
                 overflow: hidden;
                 display: -webkit-box;
@@ -29,11 +41,14 @@
                 -webkit-box-orient: vertical;
                 width: fit-content;
             }
+
             p {
                 min-width: fit-content;
             }
+
             .bcProfile {
                 margin-right: 10px;
+
                 img {
                     width: 35px;
                     height: 35px;
@@ -41,10 +56,12 @@
                 }
             }
         }
+
         .bcMiddle {
             align-items: center;
             margin-top: 20px;
             flex: 1;
+
             .bcBlogContent {
                 flex: 2;
                 color: var(--textColor);
@@ -55,8 +72,18 @@
                 width: fit-content;
             }
         }
-        .bBottom {
-            margin: 10px 0px;
+
+    }
+
+    .bcBottom {
+        margin: 10px 0px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        a {
+            max-width: 60px;
+            text-align: center;
         }
     }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg"
 import draftToHtml from "draftjs-to-html"
-
+import "./editor.scss"
 class CustomEditor extends Component {
     constructor(props) {
         super(props);
@@ -40,10 +40,7 @@ class CustomEditor extends Component {
                             color: "var(--secondary-text-color)"
                         }}
                         onContentStateChange={this.onContentStateChange}
-                        toolbarStyle={{
-                            backgroundColor: "var(--secondary)",
-                            color: "black !Important"
-                        }}
+                        toolbarClassName="toolBar"
                     />
                 </div>
                 <h1 className="txtSB-2 mtb-1">

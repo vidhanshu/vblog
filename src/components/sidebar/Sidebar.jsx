@@ -47,7 +47,7 @@ function Sidebar() {
                 </div>
                 <div className="recentlyWatchedBlogsContainer">
                     <span className="txtSB-2">Previously watched blogs</span>
-                    <div className="recentlyWatchedBlogs">
+                    <div className="recentlyWatchedBlogs border">
                         {
                             recentlyWatchBlogs.map((blog, idx) => (<Link to="/blog">{<FavBlog/>}<Divider/></Link>))
                         }

@@ -2,13 +2,14 @@
     @media (min-width:900px) {
         & {
             border-left: .2px solid var(--borderColor);
+            padding: var(--padding) 20px;
         }
     }
+    padding: var(--padding) 0px;
     a{
         color: white;
     }
-    flex: 1;
-    padding: 50px 20px;
+    flex: 1.5;
     .profileImage {
         width: 100%;
 
@@ -37,8 +38,8 @@
     }
 
     .profileFavoriteContainer {
+        width: 100%;
         .profileFavorite {
-            width: 100%;
             height: 600px;
             padding: 10px;
             overflow-y: auto;

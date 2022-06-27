@@ -18,12 +18,12 @@
     --textColor: #525252;
     --secondary-text-color: rgb(0, 0, 0);
     --logoSize: 20px;
-    --primary: #5D3FD3;
+    --primary: #000000;
     --borderColor: #DBDBDB;
     --secondary: white;
     --secondary-box-shadow-color: rgba(20, 20, 20, 0.4);
-    --btn-color: #5D3FD3;
-    --btn-hover-color: #4724d2;
+    --btn-color: #683535;
+    --btn-hover-color: #0c0c0c;
     background-color: var(--secondary);
 }
 
@@ -50,7 +50,13 @@ body {
 
     @media (max-width: 700px) {
         .common {
-            --padding: 20px;
+            --padding: 10px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .common {
+            --padding: 5px;
         }
     }
 }
@@ -58,10 +64,6 @@ body {
 input {
     background-color: var(--secondary);
     color: var(--secondary-text-color)
-}
-
-.rdw-option-wrapper.rdw-image-alignment-option {
-    color: #000000 !important;
 }
 
 @media (max-width:700px) {
@@ -85,6 +87,7 @@ input {
 a {
     text-decoration: none;
 }
+
 
 .motto {
     font-size: 80px;
@@ -355,6 +358,10 @@ a {
     border: none;
     cursor: pointer;
     font-weight: normal;
+
+    &:hover {
+        background-color: var(--btn-hover-color);
+    }
 }
 
 .btn {
@@ -366,12 +373,16 @@ a {
     border-radius: 5px;
     margin: 10px;
     cursor: pointer;
+
+    &:hover {
+        background-color: var(--btn-hover-color);
+    }
 }
 
 .btn-sqr {
     border: none;
     background-color: var(--btn-color);
-    color: white;
+    color: white !important;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
@@ -392,6 +403,10 @@ a {
     margin: 10px 0px;
     cursor: pointer;
     width: 100%;
+
+    &:hover {
+        background-color: var(--btn-hover-color);
+    }
 }
 
 /************************ input styles ***********************/

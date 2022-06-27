@@ -5,7 +5,7 @@ import { UserProfile,Layout,BlogCard,Section } from "../../components"
 function Profile() {
     return (
         <Layout>
-            <Section title="Blogs">
+            <Section title="Profile">
                 <div className="profileBlogsContainer">
                     <div className="profileBlogs">
                         <BlogCard />
