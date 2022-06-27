@@ -1,12 +1,12 @@
 import './navbar.scss'
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useGlobalContext } from '../../contexts/globalcontext';
 import { BsSun, BsMoon } from "react-icons/bs"
 function Navbar() {
   const { setDark, dark } = useGlobalContext();
   const [scrollY, setScrollY] = useState('0');
-
+  const route = useLocation().pathname.replace("/", "");
   const bp = 60;
 
   useEffect(() => {
@@ -16,6 +16,9 @@ function Navbar() {
   }, []);
 
   const color = scrollY <= bp ? { color: "white" } : { color: "black" };
+  const active = scrollY <= bp ? { backgroundColor: "var(--btn-color)" } : { backgroundColor: "#ffffff" };
+  active.borderRadius = "5px";
+  active.padding = "5px";
 
   return (
     <nav className="nav" style={scrollY <= bp ? { backgroundColor: "var(--primary)" } : {}}>
@@ -23,10 +26,10 @@ function Navbar() {
         <h1 style={color}>vblog.</h1>
       </div>
       <ul className="options" >
-        <Link to="/" ><li style={color}>HOME</li></Link>
-        <Link to="/about" ><li style={color}>ABOUT</li></Link>
-        <Link to="/write" ><li style={color}>WRITE</li></Link>
-        <Link to="/settings" ><li style={color}>SETTINGS</li></Link>
+        <Link style={route === "" ? active : null} to="/" ><li style={color}>HOME</li></Link>
+        <Link style={route === "about" ? active : null} to="/about" ><li style={color}>ABOUT</li></Link>
+        <Link style={route === "write" ? active : null} to="/write" ><li style={color}>WRITE</li></Link>
+        <Link style={route === "settings" ? active : null} to="/settings" ><li style={color}>SETTINGS</li></Link>
       </ul>
       <div className="profile">
         <div>

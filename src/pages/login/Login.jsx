@@ -1,9 +1,11 @@
 import "./login.scss"
-import { Section } from "../../components"
+import { Section, AuthForm } from "../../components"
 
 function Login() {
   return (
-    <div>Login</div>
+    <Section className="login">
+      <AuthForm />
+    </Section>
   )
 }
 

@@ -66,6 +66,21 @@ input {
     color: var(--secondary-text-color)
 }
 
+.login-input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    position: relative;
+    border-bottom: 2px solid rgb(166, 166, 166);
+    font-size: 15px;
+    width: 100%;
+    margin: 20px 0px;
+    display: block;
+    &:focus {
+        outline: none;
+    }
+}
+
 @media (max-width:700px) {
     :root {
         --padding: 20px;
@@ -379,6 +394,17 @@ a {
     }
 }
 
+.login-btn {
+    border: none;
+    background-color: rgb(0, 136, 255);
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 0px;
+    font-size: 15px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
 .btn-sqr {
     border: none;
     background-color: var(--btn-color);
@@ -426,4 +452,24 @@ a {
 
 .p-2 {
     padding: 20px;
+}
+/************************ text align styles ***********************/
+.txt-center{
+    text-align: center;
+}
+/********************** text color styles ***********************/
+.link{
+    columns: rgb(0, 0, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+/********************** container styles ***********************/
+.flex{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.full-height{
+    min-height: 100vh;
 }
