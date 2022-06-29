@@ -49,7 +49,7 @@ function Sidebar() {
                     <span className="txtSB-2">Previously watched blogs</span>
                     <div className="recentlyWatchedBlogs border">
                         {
-                            recentlyWatchBlogs.map((blog, idx) => (<Link to="/blog">{<FavBlog/>}<Divider/></Link>))
+                            recentlyWatchBlogs.map((blog, idx) => (<Link key={idx} to="/blog">{<FavBlog/>}<Divider/></Link>))
                         }
                     </div>
                 </div>

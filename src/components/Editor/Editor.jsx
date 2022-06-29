@@ -1,67 +1,82 @@
-import React, { Component } from 'react';
-import { Editor } from 'react-draft-wysiwyg';
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg"
-import draftToHtml from "draftjs-to-html"
+import React, { useState } from 'react'
+import { AiOutlinePlus } from "react-icons/ai"
+import { setInputField } from "../../utils/utils"
+
 import "./editor.scss"
-class CustomEditor extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            contentState: '',
+
+function CustomEditor() {
+    const [Heading, setHeading] = useState('');
+    const [file, setFile] = useState('');
+    const [text, setText] = useState('');
+
+    const imageHandler = (evt) => {
+        const file = evt.target.files[0];
+        const Reader = new FileReader();
+        Reader.readAsDataURL(file);
+        Reader.onloadend = (evt) => {
+            setFile(evt.currentTarget.result);
         }
     }
-    onContentStateChange = (contentState) => {
-        const regx1 = new RegExp('<p></p>', 'ig')
-        const regx2 = new RegExp('text-align:none', 'ig')
-        const newContentState = draftToHtml(contentState).replace(regx2, "text-align:center").replace(regx1, "<br/>");
-        /* *****storing to local storage***** */
-        localStorage.setItem("draft", JSON.stringify({ html: newContentState }));
-        this.setState({
-            contentState: newContentState,
-        });
-    };
-    componentDidMount() {
-        const draft = localStorage.getItem("draft");
-        if (draft) {
-            this.setState({
-                contentState: JSON.parse(draft).html,
-            })
-        }
+
+    const textHandler = (evt) => {
+        const txt = evt.target.value;
+        setText(txt);
     }
-    render() {
-        return (
-            <>
-                <div>
-                    <Editor
-                        editorClassName="border"
-                        editorStyle={{
-                            minHeight: "500px",
-                            padding: "10px",
-                            color: "var(--secondary-text-color)"
-                        }}
-                        onContentStateChange={this.onContentStateChange}
-                        toolbarClassName="toolBar"
-                    />
-                </div>
-                <h1 className="txtSB-2 mtb-1">
-                    Blog Preview
-                </h1>
-                <div
-                    className="mtb-1 border p-1"
-                    style={{
-                        color: "var(--secondary-text-color)"
-                    }}
-                    dangerouslySetInnerHTML={
-                        {
-                            __html: this.state.contentState === '' ?
-                                `<p class="txtL-2">Start writing a blog to see preview...</p>`
-                                : this.state.contentState
-                        }
+    return (
+        <div className='editor'>
+            <input
+                className='blog-heading'
+                type="text"
+                placeholder='Heading'
+                onChange={evt => setInputField(evt.target.value, setHeading)}
+            />
+            <label
+                className='file-icon'
+                htmlFor="file" >
+                <AiOutlinePlus style={{
+                    fontSize: "35px",
+                    border: "2px solid var(--secondary-text-color)",
+                    borderRadius: "50%",
+                    color: "var(--secondary-text-color)",
+                    cursor: "pointer"
+                }} />
+            </label>
+
+            <div className="image-container">
+                <input
+                    className='file'
+                    type="file"
+                    name="file"
+                    id="file"
+                    onChange={imageHandler} />
+                {file && <img src={file} alt="" />}
+            </div>
+
+            <textarea
+                className='border textEditor'
+                placeholder='Enter a blog content'
+                onChange={textHandler}
+            >
+            </textarea>
+
+            <p className="txtSB-1 mtb-2">
+                Blog preview
+            </p>
+            <div className="preview border p-1">
+                <h1 className="blog-heading">
+                    {
+                        Heading
                     }
-                ></div>
-            </>
-        );
-    }
+                </h1>
+                <div className="image-container">
+                    {file && <img src={file} alt="" />}
+                </div>
+                <div className="text-preview">
+                    {text}
+                </div>
+            </div>
+        </div >
+    )
 }
 
 export default CustomEditor

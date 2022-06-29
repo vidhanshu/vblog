@@ -6,6 +6,10 @@ import { FiMenu } from "react-icons/fi"
 import { VscChromeClose } from "react-icons/vsc"
 import { useState } from 'react'
 import { Link, useLocation } from "react-router-dom"
+import { logout } from "../../api/authRequests"
+import {successLogout} from "../../utils/notifications"
+import {failedLogout} from "../../utils/notifications"
+
 function Layout({ children }) {
     const [nav, setNav] = useState(false);
     const route = useLocation().pathname.replace("/", "");
@@ -22,9 +26,11 @@ function Layout({ children }) {
     const active = {
         borderRadius: "5px",
         padding: "5px",
-        backgroundColor: "var(--btn-hover-color)"
+        backgroundColor: "var(--mobile-nav-hover-color)"
     }
+    const logMeOut=()=>{
 
+    }
     return (
         <motion.main
             variants={container}
@@ -37,6 +43,7 @@ function Layout({ children }) {
                 <Link style={route === "about" ? active : null} to="/about" ><li>ABOUT</li></Link>
                 <Link style={route === "write" ? active : null} to="/write" ><li>WRITE</li></Link>
                 <Link style={route === "settings" ? active : null} to="/settings" ><li>SETTINGS</li></Link>
+                <Link to="/auth" onClick={logMeOut}>LOGOUT</Link>
             </ul>
 
             <div className="menu-btn border" onClick={() => setNav(e => !e)}>

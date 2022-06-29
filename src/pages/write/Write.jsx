@@ -2,7 +2,6 @@ import "./write.scss"
 import { Section, Layout } from "../../components"
 import React from 'react';
 import { CustomEditor } from "../../components"
-import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function Write() {
 
