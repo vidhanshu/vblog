@@ -22,9 +22,11 @@
     --borderColor: #DBDBDB;
     --secondary: white;
     --secondary-box-shadow-color: rgba(20, 20, 20, 0.4);
-    --btn-color: #683535;
+    --btn-color: #5d0eac;
     --btn-hover-color: #0c0c0c;
-    --mobile-nav-hover-color:rgb(222, 215, 215);
+    --mobile-nav-hover-color:rgb(241, 233, 233);
+    --blogCard-bg-color: rgb(249, 247, 247);
+    --blogCard-border: 2px solid rgba(0, 0, 0, 0.075);
     background-color: var(--secondary);
 }
 
@@ -42,6 +44,8 @@
     --btn-color: #3f46cd;
     --btn-hover-color: rgb(55, 15, 212);
     --mobile-nav-hover-color:rgb(55, 15, 212);
+    --blogCard-bg-color: rgb(15, 15, 73);
+    --blogCard-border: 2px solid rgba(255, 255, 255, 0.121);
     background-color: var(--secondary);
 }
 
@@ -52,13 +56,13 @@ body {
 
     @media (max-width: 700px) {
         .common {
-            --padding: 10px;
+            --padding: 15px;
         }
     }
 
     @media (max-width: 400px) {
         .common {
-            --padding: 5px;
+            --padding: 10px;
         }
     }
 }
@@ -78,6 +82,7 @@ input {
     width: 100%;
     margin: 20px 0px;
     display: block;
+    background-color: white !important;
     &:focus {
         outline: none;
     }
@@ -236,6 +241,18 @@ a {
 .txtL-3 {
     color: var(--textColor);
     font-size: 13px;
+}
+.txtL-3x {
+    color: var(--textColor);
+    font-size: 15px;
+}
+.txtL-3xx {
+    color: var(--textColor);
+    font-size: 17px;
+}
+.txtL-4 {
+    color: var(--textColor);
+    font-size: 10px;
 }
 
 /************************semi bold titles***********************/
@@ -431,10 +448,27 @@ a {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    position: relative;
+    padding: 5px 10px;
     box-shadow: var(--secondary-box-shadow-color);
-
-    &:hover {
-        background-color: var(--btn-hover-color);
+    overflow: hidden;
+    &::after{
+        content: '';
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 0;
+        top: 0;
+        width: 0%;
+        height:100%;
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.268);
+        transition: .2s;
+        z-index: 0;
+    }
+    &:hover::after {
+        width: 100%;
     }
 }
 

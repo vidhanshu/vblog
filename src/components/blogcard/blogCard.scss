@@ -3,8 +3,14 @@
     display: flex;
     flex-direction: column;
     gap: 20px 0px;
-    max-width: 800px;
     background-color: transparent;
+    background-color: var(--blogCard-bg-color);
+    border: var(--blogCard-border);
+    box-shadow: var(--blogCard-shadow);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0px;
+
     .bcWrapper {
         display: flex;
         justify-content: space-between;
@@ -63,6 +69,7 @@
             flex: 1;
 
             .bcBlogContent {
+                text-align: justify;
                 flex: 2;
                 color: var(--textColor);
                 overflow: hidden;

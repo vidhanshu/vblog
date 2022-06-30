@@ -24,7 +24,7 @@ function BlogCard() {
                         <div className="bcProfile">
                             <img src="https://th.bing.com/th/id/OIP.jryuUgIHWL-1FVD2ww8oWgHaHa?pid=ImgDet&rs=1" alt="" />
                         </div>
-                        <h4 className="txtB-1">
+                        <h4 className="txtB-2">
                             Lorem ipsum dolor.
                         </h4>
                         <span className="dot">.</span>
@@ -33,7 +33,7 @@ function BlogCard() {
                         </p>
                     </div>
                     <div className="bcMiddle">
-                        <p className="bcBlogContent txtL-2">
+                        <p className="bcBlogContent txtL-3x">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam, quaerat corporis adipisci perspiciatis dignissimos error beatae voluptatum. Dicta harum eum non provident sint. Omnis, doloremque aut pariatur inventore assumenda cupiditate?
                         </p>
                     </div>
@@ -48,9 +48,9 @@ function BlogCard() {
                 }
                 <span className="dot">.</span>
                 <span className="txtL-3">2m to read</span>
-                <Link to="/blog" className="btn-sqr p-1 ma-1 txt-3">read</Link>
+                <Link to="/blog" className="btn-sqr ma-1 txt-3">read</Link>
             </div>
-            <Divider theme="dark" />
+            {/* <Divider theme="dark" /> */}
         </div>
     )
 }

@@ -6,10 +6,10 @@
         }
     }
     padding: var(--padding) 0px;
+    flex: 1.5;
     a{
         color: white;
     }
-    flex: 1.5;
     .profileImage {
         width: 100%;
 
@@ -19,7 +19,9 @@
             border-radius: 50%;
         }
     }
-
+    .profileAbout{
+        max-width: 400px;
+    }
     .profileBlogs {
         flex: 3;
         padding: 20px 20px 20px 0px;

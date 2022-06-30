@@ -2,7 +2,7 @@ import { isAllNonEmpty } from "./utils"
 import { login, logout, register } from "../api/authRequests"
 import isEmail from "validator/lib/isEmail"
 import isStrongPassword from "validator/lib/isStrongPassword"
-import { successLogin, failedLogin, successRegister, failedRegister, fillAllDetails, successCustom, failureCustom, successLogout, failedLogout } from "./notifications"
+import { successLogin, successRegister, failedRegister, fillAllDetails, successCustom, failureCustom, successLogout, failedLogout } from "./notifications"
 
 export const registrationHandler = async (data, setLoggedInAs, navigate) => {
 
@@ -44,8 +44,7 @@ export const loginHandler = async (data, setLoggedInAs, navigate) => {
             navigate("/");
         }
         else {
-            failureCustom(response.error.message)
-            console.log(response)
+            failureCustom("Wrong email or password");
         }
     }
     else {
@@ -54,7 +53,7 @@ export const loginHandler = async (data, setLoggedInAs, navigate) => {
 }
 
 
-export const logoutHandler = async (token,setLoggedInAs, navigate) => {
+export const logoutHandler = async (token, setLoggedInAs, navigate) => {
 
     const response = await logout(token);
 
