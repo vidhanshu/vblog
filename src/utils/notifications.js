@@ -16,4 +16,5 @@ export const fillAllDetails = () => toast("please fill all details", { type: "in
 export const successCustom = (txt) => toast(txt, { type: "success", autoClose: 1000 })
 export const failureCustom = (txt) => toast(txt, { type: "error", autoClose: 1000 })
 export const warningCustom = (txt) => toast(txt, { type: "warning", autoClose: 1000 })
+export const errorCustom = (txt) => toast(txt, { type: "error", autoClose: 1000 })
 export const infoCustom = (txt) => toast(txt, { type: "info", autoClose: 1000 })

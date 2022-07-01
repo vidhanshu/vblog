@@ -35,7 +35,7 @@ function Sidebar() {
             <div className="border sidebarSearchContainer">
                 <div className="sidebarSearch border">
                     <AiOutlineSearch />
-                    <input type="text" placeholder="Search a blog." />
+                    <input style={{backgroundColor:"transparent"}} type="text" placeholder="Search a blog." />
                 </div>
                 <div className="recommendedTagsContainer">
                     <span className="txtSB-2">Recommended tags</span>

@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc"
 import { BsFacebook, BsGithub } from "react-icons/bs"
 import { AiFillTwitterCircle } from "react-icons/ai"
 import { useGlobalContext } from "../../contexts/globalcontext"
-import { setInputField, onKeyPressed } from "../../utils/utils"
+import { setInputField, onKeyPressed, isOnline } from "../../utils/utils"
 import isEmail from "validator/lib/isEmail"
 import isStrongPassword from "validator/lib/isStrongPassword"
 import { registrationHandler, loginHandler } from "../../utils/authHandlers"
@@ -15,22 +15,24 @@ function AuthForm() {
     const navigate = useNavigate();
 
     const [isLogin, setIsLogin] = useState(true);
-    const { setLoggedInAs, setIsOnline } = useGlobalContext();
+    const { setLoggedInAs, setIsOnline, setIsLoading } = useGlobalContext();
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const callLoginHandler = () => {
-        if (!window.navigator.onLine) {
+        if (!isOnline()) {
             return setIsOnline(false);
         }
-        loginHandler({ email, password }, setLoggedInAs, navigate);
+        setIsLoading(true);
+        loginHandler({ email, password }, setLoggedInAs, navigate, setIsLoading);
     }
     const callRegistrationHandler = () => {
-        if (!window.navigator.onLine) {
+        if (!isOnline()) {
             return setIsOnline(false);
         }
-        registrationHandler({ username, password, email }, setLoggedInAs, navigate);
+        setIsLoading(true);
+        registrationHandler({ username, password, email }, setLoggedInAs, navigate, setIsLoading);
     }
 
     const handleSubmit = () => {

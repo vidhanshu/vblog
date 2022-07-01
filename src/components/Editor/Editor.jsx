@@ -3,12 +3,20 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { infoCustom, successCustom, failureCustom } from '../../utils/notifications'
 import { setInputField } from "../../utils/utils"
 import { onKeyPressed } from '../../utils/utils'
-import TagWCross from '../tag with cross/TagWcross'
 import { getTags, postTag } from '../../api/tagRequest';
+import Suggestions from './sub components/Suggestions'
+import BlogPreview from './sub components/BlogPreview'
+import TagsList from './sub components/TagsList'
+import { useGlobalContext } from "../../contexts/globalcontext"
+import { publishHandler } from '../../utils/blogHandlers'
+import { useNavigate } from "react-router-dom"
 
 import "./editor.scss"
 
 function CustomEditor() {
+    const navigate = useNavigate();
+    const { setIsLoading, loggedInAs } = useGlobalContext();
+
     const [Heading, setHeading] = useState('');
     const [file, setFile] = useState('');
     const [text, setText] = useState('');
@@ -80,7 +88,8 @@ function CustomEditor() {
     }
 
     const postNewTagHandler = async () => {
-        const res = await postTag(currentTag);
+        setIsLoading(true);
+        const res = await postTag(currentTag, setIsLoading);
         if (res.data) {
             setIsSuggestion(false);
             setSuggestions(res.data);
@@ -95,101 +104,89 @@ function CustomEditor() {
 
         setFilteredSug(filtered);
     }
+
+    const callPublishHandler = async () => {
+        const data = {
+            title: Heading,
+            text,
+            tags,
+        }
+        await publishHandler(loggedInAs.token, data, setIsLoading, navigate);
+    }
+
     return (
-        <div className='editor'>
-            <input
-                className='blog-heading'
-                type="text"
-                placeholder='Heading'
-                onChange={evt => setInputField(evt.target.value, setHeading)}
-                autoFocus={true}
-                value={Heading}
-            />
-            <label
-                className='file-icon'
-                htmlFor="file" >
-                <AiOutlinePlus style={{
-                    fontSize: "35px",
-                    border: "2px solid var(--secondary-text-color)",
-                    borderRadius: "50%",
-                    color: "var(--secondary-text-color)",
-                    cursor: "pointer"
-                }} />
-            </label>
-
-            <div className="image-container">
-                <input
-                    className='file'
-                    type="file"
-                    name="file"
-                    id="file"
-                    onChange={imageHandler} />
-                {file && <img src={file} alt="" />}
-            </div>
-
-            <textarea
-                className='border textEditor'
-                placeholder='Enter a blog content'
-                onChange={textHandler}
+        <>
+            <button
+                onClick={callPublishHandler}
+                className="circular-btn mb-1"
             >
-            </textarea>
-            <div className="addCategories">
-                <p className="txt-2">Add tags</p>
-                <div className="tag-input-container">
-                    <input
-                        type="text"
-                        onKeyDown={(e) => onKeyPressed(e.key, addTag, 'Enter')}
-                        onChange={handleCurrentTag}
-                        value={currentTag}
-                        className="login-input tag-input"
-                        placeholder="Add tags"
-                    />
-                    <button className="login-btn" onClick={addTag}>Add</button>
-                    {
-                        isSuggestion &&
-                        <ul className="suggestions">
-                            {
-                                filteredSug.length
-                                    ? filteredSug.map((sug, idx) => (
-                                        <li
-                                            key={idx}
-                                            onClick={() => {
-                                                setCurrentTag(sug);
-                                                setIsSuggestion(false);
-                                            }}
-                                            className="sug"
-                                        >
-                                            {sug}
-                                        </li>
-                                    ))
-                                    : <li onClick={postNewTagHandler}>add {currentTag}</li>
-                            }
-                        </ul>
-                    }
-                </div>
-                <div className="tags-list">
-                    {tags.length !== 0
-                        ? tags.map((tag, index) => <TagWCross key={index} handler={() => removeTag(tag)}>{tag}</TagWCross>)
-                        : <p className='txtL-3'>No tags available</p>}
-                </div>
-            </div>
-            <p className="txtSB-1 mtb-2">
-                Blog preview
-            </p>
-            <div className="preview border p-1">
-                <h1 className="blog-heading">
-                    {
-                        Heading
-                    }
-                </h1>
+                publish
+            </button>
+            <div className='editor'>
+                <input
+                    className='blog-heading'
+                    type="text"
+                    placeholder='Heading'
+                    onChange={evt => setInputField(evt.target.value, setHeading)}
+                    autoFocus={true}
+                    value={Heading}
+                />
+                <label
+                    className='file-icon'
+                    htmlFor="file" >
+                    <AiOutlinePlus style={{
+                        fontSize: "35px",
+                        border: "2px solid var(--secondary-text-color)",
+                        borderRadius: "50%",
+                        color: "var(--secondary-text-color)",
+                        cursor: "pointer"
+                    }} />
+                </label>
+
                 <div className="image-container">
+                    <input
+                        className='file'
+                        type="file"
+                        name="file"
+                        id="file"
+                        onChange={imageHandler} />
                     {file && <img src={file} alt="" />}
                 </div>
-                <div className="text-preview">
-                    {text}
+
+                <textarea
+                    className='border textEditor'
+                    placeholder='Enter a blog content'
+                    onChange={textHandler}
+                >
+                </textarea>
+                <div className="addCategories">
+                    <p className="txt-2">Add tags</p>
+                    <div className="tag-input-container">
+                        <input
+                            type="text"
+                            onKeyDown={(e) => onKeyPressed(e.key, addTag, 'Enter')}
+                            onChange={handleCurrentTag}
+                            value={currentTag}
+                            className="login-input tag-input"
+                            placeholder="Add tags"
+                        />
+                        <button className="login-btn" onClick={addTag}>Add</button>
+                        {
+                            isSuggestion
+                            && <Suggestions
+                                filteredSug={filteredSug}
+                                setCurrentTag={setCurrentTag}
+                                setIsSuggestion={setIsSuggestion}
+                                postNewTagHandler={postNewTagHandler}
+                                currentTag={currentTag}
+                            />
+                        }
+                    </div>
+                    <TagsList tags={tags} removeTag={removeTag} />
                 </div>
-            </div>
-        </div >
+                <BlogPreview Heading={Heading} text={text} file={file} />
+            </div >
+        </>
     )
 }
 

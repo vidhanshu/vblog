@@ -440,6 +440,9 @@ a {
     &:hover{
         background-color: rgb(0, 89, 167);
     }
+    &:disabled{
+        background-color: rgb(0, 89, 167);
+    }
 }
 
 .btn-sqr {

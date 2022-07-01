@@ -1,5 +1,22 @@
 .blogPreview {
     flex: 3;
-    padding: 10px;
     margin: 0px 10px;
+    color: var(--secondary-text-color);
+    text-align: justify;
+    transition: 0;
+    .preview {
+        img {
+            max-width: 400px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        margin: 0px;
+
+        .preview {
+            img {
+                max-width: 100%;
+            }
+        }
+    }
 }

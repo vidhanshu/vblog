@@ -8,7 +8,7 @@ function Header() {
                 ideas finds you<span className="recording-animation ">.</span>
             </h1>
             <div className="headerImage">
-                <img src="./blog.png" alt="" />
+                <img src="https://i.postimg.cc/9MmWHSf4/blog.png" alt="" />
             </div>
         </div>
     )

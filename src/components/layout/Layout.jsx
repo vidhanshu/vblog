@@ -16,7 +16,7 @@ function Layout({ children }) {
     const [nav, setNav] = useState(false);
     const route = useLocation().pathname.replace("/", "");
 
-    const { setLoggedInAs, loggedInAs } = useGlobalContext();
+    const { setLoggedInAs, loggedInAs, setIsLoading } = useGlobalContext();
 
     const container = {
         hidden: { opacity: 0 },
@@ -33,7 +33,8 @@ function Layout({ children }) {
         backgroundColor: "var(--mobile-nav-hover-color)"
     }
     const logMeOut = async () => {
-        await logoutHandler(loggedInAs.token, setLoggedInAs, navigate);
+        setIsLoading(true);
+        await logoutHandler(loggedInAs.token, setLoggedInAs, navigate, setIsLoading);
     }
     return (
         <motion.main

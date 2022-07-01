@@ -1,18 +1,22 @@
 import "./blogCard.scss"
 import Tag from "../tag/Tag"
-import Divider from "../divider/Divider"
-import {Link} from "react-router-dom"
-function BlogCard() {
-    const tags = [
-        "javascript",
-        "java",
-        "c++",
-        "programming",
-    ]
+import { Link } from "react-router-dom"
 
+
+const tags = [
+    "javascript",
+    "java",
+    "c++",
+    "programming",
+]
+
+function BlogCard({ tags, title, createdAt, text, image, readTime, _id }) {
+    if (!tags) {
+        tags = []
+    }
     let Tags;
     if (tags.length <= 2) {
-        Tags = tags.map(tag => <Tag>{tag}</Tag>)
+        Tags = tags.map((tag, idx) => <Tag key={idx}>{tag}</Tag>)
     } else {
         Tags = <><Tag>{tags[0]}</Tag><Tag>{tags[1]}</Tag><Tag>+{tags.length - 2}</Tag></>
     }
@@ -25,21 +29,21 @@ function BlogCard() {
                             <img src="https://th.bing.com/th/id/OIP.jryuUgIHWL-1FVD2ww8oWgHaHa?pid=ImgDet&rs=1" alt="" />
                         </div>
                         <h4 className="txtB-2">
-                            Lorem ipsum dolor.
+                            {title}
                         </h4>
                         <span className="dot">.</span>
                         <p className="txtL-3">
-                            3m ago
+                            {createdAt}
                         </p>
                     </div>
                     <div className="bcMiddle">
                         <p className="bcBlogContent txtL-3x">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam, quaerat corporis adipisci perspiciatis dignissimos error beatae voluptatum. Dicta harum eum non provident sint. Omnis, doloremque aut pariatur inventore assumenda cupiditate?
+                            {text}
                         </p>
                     </div>
                 </div>
                 <div className="bcBlogImage">
-                    <img src="https://th.bing.com/th/id/OIP.jryuUgIHWL-1FVD2ww8oWgHaHa?pid=ImgDet&rs=1" alt="" />
+                    <img src={image ? image : "https://media.istockphoto.com/vectors/error-document-icon-vector-id1062127004?k=6&m=1062127004&s=612x612&w=0&h=94D4dEDZzXuNQ0rhw7yftXb259wNpjDMoNmcl9KvUD8="} alt="" />
                 </div>
             </div>
             <div className="bcBottom">
@@ -47,11 +51,10 @@ function BlogCard() {
                     Tags
                 }
                 <span className="dot">.</span>
-                <span className="txtL-3">2m to read</span>
-                <Link to="/blog" className="btn-sqr ma-1 txt-3">read</Link>
+                <span className="txtL-3">{readTime}</span>
+                <Link to={`/blog/${_id}`} className="btn-sqr ma-1 txt-3">read</Link>
             </div>
-            {/* <Divider theme="dark" /> */}
-        </div>
+        </div >
     )
 }
 

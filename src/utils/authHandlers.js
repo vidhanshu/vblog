@@ -4,7 +4,7 @@ import isEmail from "validator/lib/isEmail"
 import isStrongPassword from "validator/lib/isStrongPassword"
 import { successLogin, successRegister, failedRegister, fillAllDetails, successCustom, failureCustom, successLogout, failedLogout } from "./notifications"
 
-export const registrationHandler = async (data, setLoggedInAs, navigate) => {
+export const registrationHandler = async (data, setLoggedInAs, navigate, setIsLoading) => {
 
     const { email, password, username } = data;
 
@@ -28,9 +28,10 @@ export const registrationHandler = async (data, setLoggedInAs, navigate) => {
     else {
         fillAllDetails();
     }
+    setIsLoading(false);
 }
 
-export const loginHandler = async (data, setLoggedInAs, navigate) => {
+export const loginHandler = async (data, setLoggedInAs, navigate, setIsLoading) => {
     const { email, password, username } = data;
 
     if (!isAllNonEmpty([email, password, username]) && isEmail(email) && isStrongPassword(password)) {
@@ -50,10 +51,11 @@ export const loginHandler = async (data, setLoggedInAs, navigate) => {
     else {
         fillAllDetails();
     }
+    setIsLoading(false);
 }
 
 
-export const logoutHandler = async (token, setLoggedInAs, navigate) => {
+export const logoutHandler = async (token, setLoggedInAs, navigate,setIsLoading) => {
 
     const response = await logout(token);
     console.log(response)
@@ -67,4 +69,5 @@ export const logoutHandler = async (token, setLoggedInAs, navigate) => {
         failedLogout()
         console.log(response)
     }
+    setIsLoading(false);
 }

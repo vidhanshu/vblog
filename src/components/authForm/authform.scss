@@ -7,7 +7,7 @@
     max-width: 800px;
     gap: 20px;
     overflow: hidden;
-    height: 600px;
+    height: fit-content;
     box-shadow: var(--secondary-box-shadow-color);
 
     @media (max-width:900px) {

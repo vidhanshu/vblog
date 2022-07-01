@@ -1,7 +1,10 @@
 import axios from "axios"
-
+import { isOnline } from "../utils/utils"
 /*****************POST*******************/
 export const register = async (data) => {
+    if (!isOnline()) {
+        return { error: "No internet connection" }
+    }
     try {
         const res = await axios({
             url: "/user/register",
@@ -17,6 +20,9 @@ export const register = async (data) => {
 }
 
 export const login = async (data) => {
+    if (!isOnline()) {
+        return { error: "No internet connection" }
+    }
     try {
         const res = await axios({
             url: "/user/login",
@@ -32,7 +38,9 @@ export const login = async (data) => {
 }
 
 export const logout = async (token) => {
-    console.log(token)
+    if (!isOnline()) {
+        return { error: "No internet connection" }
+    }
     try {
         await axios({
             url: "/user/logout",

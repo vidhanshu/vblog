@@ -18,3 +18,14 @@ export const onKeyPressed = (key, func, wKey) => {
         func();
     }
 }
+
+export const isOnline = () => window.navigator.onLine;
+
+export const getThemeFromLocalStorage = () => JSON.parse(window.localStorage.getItem("theme"));
+export const setThemeToLocalStorage = (val) => window.localStorage.setItem("theme", JSON.stringify(val))
+
+export const calcReadTime = (txt) => {
+    const noOfWords = txt.split(" ").length;
+    const noOfMinutes = (noOfWords / 200).toFixed(2) + "min";
+    return noOfMinutes;
+}
