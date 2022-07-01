@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc"
 import { BsFacebook, BsGithub } from "react-icons/bs"
 import { AiFillTwitterCircle } from "react-icons/ai"
 import { useGlobalContext } from "../../contexts/globalcontext"
-import { setInputField } from "../../utils/utils"
+import { setInputField, onKeyPressed } from "../../utils/utils"
 import isEmail from "validator/lib/isEmail"
 import isStrongPassword from "validator/lib/isStrongPassword"
 import { registrationHandler, loginHandler } from "../../utils/authHandlers"
@@ -33,6 +33,13 @@ function AuthForm() {
         registrationHandler({ username, password, email }, setLoggedInAs, navigate);
     }
 
+    const handleSubmit = () => {
+        if (isLogin) {
+            callLoginHandler();
+        } else {
+            callRegistrationHandler();
+        }
+    }
     return (
         <motion.div className='auth-form-container'
             initial={{
@@ -56,9 +63,9 @@ function AuthForm() {
                 </div>
                 <div className="form">
                     {!isLogin &&
-                        <input onChange={(evt) => setInputField(evt.target.value, setUsername)} value={username} type="text" placeholder="Username" className="login-input" />
+                        <input onKeyDown={(e) => onKeyPressed(e.key, handleSubmit, 'Enter')} onChange={(evt) => setInputField(evt.target.value, setUsername)} value={username} type="text" placeholder="Username" className="login-input" />
                     }
-                    <input onChange={(evt) => setInputField(evt.target.value, setEmail)} value={email} type="email" placeholder='Email' className="login-input" />
+                    <input onKeyDown={(e) => onKeyPressed(e.key, handleSubmit, 'Enter')} onChange={(evt) => setInputField(evt.target.value, setEmail)} value={email} type="email" placeholder='Email' className="login-input" />
                     {email &&
                         (
                             isEmail(email)
@@ -66,7 +73,7 @@ function AuthForm() {
                                 : <p className="txt-error">email must include @ and no space</p>
                         )
                     }
-                    <input onChange={(evt) => setInputField(evt.target.value, setPassword)} value={password} type="password" placeholder='Password' className="login-input" />
+                    <input onKeyDown={(e) => onKeyPressed(e.key, handleSubmit, 'Enter')} onChange={(evt) => setInputField(evt.target.value, setPassword)} value={password} type="password" placeholder='Password' className="login-input" />
                     {password &&
                         (
                             isStrongPassword(password)

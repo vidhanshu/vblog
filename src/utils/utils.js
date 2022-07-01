@@ -10,5 +10,11 @@ export const getAuthUser = () => {
     if (window.localStorage.getItem("auth")) {
         return JSON.parse(window.localStorage.getItem("auth"));
     }
-    return { }
+    return {}
+}
+
+export const onKeyPressed = (key, func, wKey) => {
+    if (key === wKey) {
+        func();
+    }
 }

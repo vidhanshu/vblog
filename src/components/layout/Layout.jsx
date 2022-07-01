@@ -5,14 +5,18 @@ import { motion } from "framer-motion"
 import { FiMenu } from "react-icons/fi"
 import { VscChromeClose } from "react-icons/vsc"
 import { useState } from 'react'
-import { Link, useLocation } from "react-router-dom"
-import { logout } from "../../api/authRequests"
-import {successLogout} from "../../utils/notifications"
-import {failedLogout} from "../../utils/notifications"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import { logoutHandler } from '../../utils/authHandlers'
+import { useGlobalContext } from '../../contexts/globalcontext'
 
 function Layout({ children }) {
+
+    const navigate = useNavigate();
+
     const [nav, setNav] = useState(false);
     const route = useLocation().pathname.replace("/", "");
+
+    const { setLoggedInAs, loggedInAs } = useGlobalContext();
 
     const container = {
         hidden: { opacity: 0 },
@@ -28,8 +32,8 @@ function Layout({ children }) {
         padding: "5px",
         backgroundColor: "var(--mobile-nav-hover-color)"
     }
-    const logMeOut=()=>{
-
+    const logMeOut = async () => {
+        await logoutHandler(loggedInAs.token, setLoggedInAs, navigate);
     }
     return (
         <motion.main
@@ -51,7 +55,7 @@ function Layout({ children }) {
                     nav ? <VscChromeClose /> : <FiMenu />
                 }
             </div>
-            <Navbar />
+            <Navbar logMeOut={logMeOut} />
             <div>
                 {children}
             </div>

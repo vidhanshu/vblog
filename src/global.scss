@@ -44,7 +44,7 @@
     --btn-color: #3f46cd;
     --btn-hover-color: rgb(55, 15, 212);
     --mobile-nav-hover-color:rgb(55, 15, 212);
-    --blogCard-bg-color: rgb(15, 15, 73);
+    --blogCard-bg-color: rgb(29, 29, 92);
     --blogCard-border: 2px solid rgba(255, 255, 255, 0.121);
     background-color: var(--secondary);
 }
@@ -83,6 +83,7 @@ input {
     margin: 20px 0px;
     display: block;
     background-color: white !important;
+    color: black;
     &:focus {
         outline: none;
     }

@@ -32,17 +32,16 @@ export const login = async (data) => {
 }
 
 export const logout = async (token) => {
+    console.log(token)
     try {
-        const res = await axios({
+        await axios({
             url: "/user/logout",
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
-        if (res.data) {
-            return res.data;
-        }
+        return { user: "done" };
     } catch (error) {
         return { error: error.message };
     }

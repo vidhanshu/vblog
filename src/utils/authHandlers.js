@@ -56,7 +56,7 @@ export const loginHandler = async (data, setLoggedInAs, navigate) => {
 export const logoutHandler = async (token, setLoggedInAs, navigate) => {
 
     const response = await logout(token);
-
+    console.log(response)
     if (response.user) {
         window.localStorage.removeItem("auth");
         successLogout()

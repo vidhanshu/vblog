@@ -4,7 +4,7 @@ import { Home, Profile, Write, About, Settings, Blog, Login } from './pages'
 import { ToastContainer } from "react-toastify"
 import { Loading, OnOffLine, ProtectedRoute } from "./components"
 import { getAuthUser } from "./utils/utils"
-export const globalContext = createContext()
+export const globalContext = createContext();
 
 
 function App() {

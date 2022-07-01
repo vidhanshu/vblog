@@ -4,6 +4,7 @@ import { useGlobalContext } from '../../contexts/globalcontext'
 
 function ProtectedRoute({ children }) {
     const { loggedInAs } = useGlobalContext();
+
     if (loggedInAs.user || window.localStorage.getItem("auth")) {
         return children
     } else {

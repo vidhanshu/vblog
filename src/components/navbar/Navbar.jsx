@@ -3,13 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom"
 import { useGlobalContext } from '../../contexts/globalcontext';
 import { BsSun, BsMoon } from "react-icons/bs"
-import { logout } from "../../api/authRequests"
-import { useNavigate } from "react-router-dom"
 
-function Navbar() {
-  const navigate = useNavigate();
+function Navbar({ logMeOut }) {
 
-  const { setDark, dark, loggedInAS, setLoggedInAs } = useGlobalContext();
+  const { setDark, dark } = useGlobalContext();
 
   const [scrollY, setScrollY] = useState('0');
   const route = useLocation().pathname.replace("/", "");
@@ -26,11 +23,6 @@ function Navbar() {
   active.borderRadius = "5px";
   active.padding = "5px";
 
-  const callLogoutHandler = () => {
-    console.log(loggedInAS);
-    logout(loggedInAS.token, setLoggedInAs, navigate);
-  }
-
   return (
     <nav className="nav" style={scrollY <= bp ? { backgroundColor: "var(--primary)" } : {}}>
       <div className="logo">
@@ -41,7 +33,7 @@ function Navbar() {
         <Link style={route === "about" ? active : null} to="/about" ><li style={color}>ABOUT</li></Link>
         <Link style={route === "write" ? active : null} to="/write" ><li style={color}>WRITE</li></Link>
         <Link style={route === "settings" ? active : null} to="/settings" ><li style={color}>SETTINGS</li></Link>
-        <span style={route === "logout" ? active : null} onClick={callLogoutHandler} ><li style={color}>LOGOUT</li></span>
+        <span style={route === "logout" ? active : null} onClick={logMeOut} ><li style={color}>LOGOUT</li></span>
       </ul>
       <div className="profile">
         <div>

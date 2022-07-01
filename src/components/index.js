@@ -15,4 +15,5 @@ import AuthForm from "./authForm/AuthForm"
 import Loading from "./loading/Loading"
 import OnOffLine from "./online offline/OnOffLine"
 import ProtectedRoute from "./protectedroute/ProtectedRoute"
-export { ProtectedRoute, Loading, AuthForm, Divider, Footer, Header, Layout, Section, BlogCard, Sidebar, FavBlog, CustomEditor, Card, EditProfile, BlogPreview, UserProfile, OnOffLine };
+import TagWCross from "./tag with cross/TagWcross"
+export { TagWCross, ProtectedRoute, Loading, AuthForm, Divider, Footer, Header, Layout, Section, BlogCard, Sidebar, FavBlog, CustomEditor, Card, EditProfile, BlogPreview, UserProfile, OnOffLine };

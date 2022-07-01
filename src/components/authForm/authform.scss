@@ -39,11 +39,22 @@
         flex: 1;
         padding: 20px;
         .form {
-            min-height: 220px;
             margin: 20px 0px;
         }
         .txt{
             margin: 10px 0px 0px 0px;
+        }
+        .txtB-1{
+            color: black;
+        }
+        .txtL-2{
+            color: rgb(66, 66, 66);
+        }
+        .link{
+            color: rgb(0, 85, 255);
+        }
+        .txtL-3{
+            color: rgb(66, 66, 66);
         }
         .social-logins {
             padding: 10px;
