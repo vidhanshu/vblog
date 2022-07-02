@@ -6,7 +6,7 @@ export const getTags = async (match) => {
         return { error: "No internet connection" }
     }
     try {
-        const res = await axios.get("/tags/all")
+        const res = await axios.get("https://vblog-backend.herokuapp.com/tags/all")
         return { data: res.data.map(tag => tag.name) }
     } catch (err) {
         return { error: err };
@@ -19,7 +19,7 @@ export const postTag = async (tag, setIsLoading) => {
     }
     try {
         const res = await axios({
-            url: "/tag/post",
+            url: "https://vblog-backend.herokuapp.com/tag/post",
             method: 'POST',
             data: {
                 name: tag
