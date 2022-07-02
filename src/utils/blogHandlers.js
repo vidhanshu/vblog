@@ -1,4 +1,4 @@
-import { publish, getBlogById } from "../api/blogRequests";
+import { publish, getBlogById, getBlogImageById } from "../api/blogRequests";
 import { isAllNonEmpty, calcReadTime } from "./utils";
 import { errorCustom, fillAllDetails, successCustom } from "./notifications"
 
@@ -39,14 +39,16 @@ export const getBlogByIdHandler = async (token, id, setFetching) => {
         return errorCustom("No blog id provided");
     }
     else {
+        console.log("fetching blog");
         setFetching(true);
         const result = await getBlogById(token, id);
-        if (result.error) {
+        const image = await getBlogImageById(id);
+        if (result.error && image.error) {
             setFetching(false);
             return errorCustom(result.error);
         } else {
             setFetching(false);
-            return result.data;
+            return { data: result.data, image: image.data };
         }
     }
 }

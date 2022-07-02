@@ -13,7 +13,8 @@ function Blog() {
     useEffect(() => {
         const fetch = async () => {
             const blog = await getBlogByIdHandler(loggedInAs.token, id, setFetching);
-            setBlog(blog)
+            setBlog({ ...blog.data, image: blog.image});
+            console.log()
         }
         fetch();
     }, [])

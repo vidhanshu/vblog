@@ -81,7 +81,6 @@ export const getBlogById = async (token, id) => {
                     }
                 }
             );
-            console.log(response.data);
             return { data: response.data };
         } catch (err) {
             return { error: err.message };
@@ -93,6 +92,21 @@ export const getBlogById = async (token, id) => {
 export const getBlogByUserId = async () => {
 
 }
+
+export const getBlogImageById = async (id) => {
+    if (!window.navigator.onLine) {
+        warningCustom("you are offline!");
+        return { error: "you are offline!" };
+    }
+    try {
+
+        const image = await axios.get(`${BACKEND_URL}/blog/${id}/image`);
+        return { data: image.data };
+    } catch (err) {
+        return { error: err.message };
+    }
+}
+
 /*********************DELETE*************************/
 
 export const deleteBlogById = async () => {

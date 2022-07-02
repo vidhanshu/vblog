@@ -4,8 +4,10 @@ import { Link, useLocation } from "react-router-dom"
 import { useGlobalContext } from '../../contexts/globalcontext';
 import { BsSun, BsMoon } from "react-icons/bs"
 import { setThemeToLocalStorage } from '../../utils/utils';
-function Navbar({ logMeOut }) {
+import { useNavigate } from 'react-router-dom';
 
+function Navbar({ logMeOut }) {
+  const navigate = useNavigate();
   const { setDark, dark } = useGlobalContext();
 
   const [scrollY, setScrollY] = useState('0');
@@ -26,7 +28,7 @@ function Navbar({ logMeOut }) {
   return (
     <nav className="nav" style={scrollY <= bp ? { backgroundColor: "var(--primary)" } : {}}>
       <div className="logo">
-        <h1 style={color}>vblog.</h1>
+        <h1 onClick={() => navigate("/")} style={color}>vblog.</h1>
       </div>
       <ul className="options" >
         <Link style={route === "" ? active : null} to="/" ><li style={color}>HOME</li></Link>

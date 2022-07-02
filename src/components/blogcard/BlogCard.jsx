@@ -35,7 +35,7 @@ function BlogCard({ tags = [], title = "", createdAt = "", text = "", image = ""
                     </div>
                 </div>
                 <div className="bcBlogImage">
-                    <img src={image ? image : "https://media.istockphoto.com/vectors/error-document-icon-vector-id1062127004?k=6&m=1062127004&s=612x612&w=0&h=94D4dEDZzXuNQ0rhw7yftXb259wNpjDMoNmcl9KvUD8="} alt="" />
+                    <img src={image ? image.data : "https://media.istockphoto.com/vectors/error-document-icon-vector-id1062127004?k=6&m=1062127004&s=612x612&w=0&h=94D4dEDZzXuNQ0rhw7yftXb259wNpjDMoNmcl9KvUD8="} alt="" />
                 </div>
             </div>
             <div className="bcBottom">

@@ -3,7 +3,7 @@ import "./blogPreview.scss"
 import TagsList from '../tagsList/TagsList'
 import SwitchTabs from '../switchTabs/SwitchTabs'
 import { BsThreeDots } from "react-icons/bs"
-function BlogPreview({ title = "trying to fetch...", file, text = "trying to fetch...." }) {
+function BlogPreview({ title = "trying to fetch...", image, text = "trying to fetch...." }) {
     text = text.replace(/\n/g, "<br>")
 
     const [open, setOpen] = useState(false);
@@ -40,7 +40,7 @@ function BlogPreview({ title = "trying to fetch...", file, text = "trying to fet
                             }
                         </h1>
                         <div className="image-container">
-                            {file && <img src={file} alt="" />}
+                            {image && <img src={image} alt="" />}
                         </div>
                         <div style={{
                             fontSize: currentSize,
