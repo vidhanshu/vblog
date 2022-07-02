@@ -1,15 +1,17 @@
 .profileDetails {
     @media (min-width:900px) {
         & {
-            border-left: .2px solid var(--borderColor);
             padding: var(--padding) 20px;
         }
     }
+
     padding: var(--padding) 0px;
     flex: 1.5;
-    a{
+
+    a {
         color: white;
     }
+
     .profileImage {
         width: 100%;
 
@@ -19,9 +21,11 @@
             border-radius: 50%;
         }
     }
-    .profileAbout{
+
+    .profileAbout {
         max-width: 400px;
     }
+
     .profileBlogs {
         flex: 3;
         padding: 20px 20px 20px 0px;
@@ -41,6 +45,7 @@
 
     .profileFavoriteContainer {
         width: 100%;
+
         .profileFavorite {
             height: 600px;
             padding: 10px;

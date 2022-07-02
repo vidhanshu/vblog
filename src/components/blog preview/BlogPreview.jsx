@@ -1,30 +1,32 @@
+import React from 'react'
 import "./blogPreview.scss"
+import TagsList from '../tagsList/TagsList'
 
-function BlogPreview({ html }) {
+function BlogPreview({ Heading = "blog Heading", file, text = "content" }) {
 
     return (
-        <div className="blogPreview border">
-            <div className="preview  p-1">
+        <>
+            <div className="blogPreview border p-1">
                 <h1 className="blog-heading">
                     {
-                        "Heading"
+                        Heading
                     }
                 </h1>
                 <div className="image-container">
-                    {"file" && <img src={"https://i.postimg.cc/9MmWHSf4/blog.png"} alt="" />}
+                    {file && <img src={file} alt="" />}
                 </div>
-                <div className="text-preview">
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero blanditiis officiis architecto natus, repellendus amet cumque, nisi facilis sapiente cupiditate eius eligendi minima rem fugit modi magni non deserunt itaque.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero blanditiis officiis architecto natus, repellendus amet cumque, nisi facilis sapiente cupiditate eius eligendi minima rem fugit modi magni non deserunt itaque.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero blanditiis officiis architecto natus, repellendus amet cumque, nisi facilis sapiente cupiditate eius eligendi minima rem fugit modi magni non deserunt itaque.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero blanditiis officiis architecto natus, repellendus amet cumque, nisi facilis sapiente cupiditate eius eligendi minima rem fugit modi magni non deserunt itaque.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero blanditiis officiis architecto natus, repellendus amet cumque, nisi facilis sapiente cupiditate eius eligendi minima rem fugit modi magni non deserunt itaque.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero blanditiis officiis architecto natus, repellendus amet cumque, nisi facilis sapiente cupiditate eius eligendi minima rem fugit modi magni non deserunt itaque.
-                    </p>
+                <div className="blogPreview-text">
+                    {
+                        text.length !== 0
+                        ? text
+                        : <span className='txtL-2'>Start typing blog to see preview...</span>
+                    }
+                </div>
+                <div className="tags-list">
+                    <TagsList tags={[]} toShowStatusText={false} />
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

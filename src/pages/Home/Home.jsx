@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { getAllBlogs } from '../../api/blogRequests';
 import { Layout, Section, Header, BlogCard, Sidebar } from '../../components'
 import { useGlobalContext } from '../../contexts/globalcontext';
-
+import {simpleTimeNDate} from "../../utils/utils"
 function Home() {
 
   let { blogs, setBlogs } = useGlobalContext();
@@ -13,7 +13,8 @@ function Home() {
 
   useEffect(() => {
     const fetch = async () => {
-      setBlogs(await getAllBlogs());
+      const data = await getAllBlogs()
+      setBlogs(data.map(e => ({ ...e, createdAt: simpleTimeNDate(e.createdAt) })));
     }
     fetch();
   }, []);

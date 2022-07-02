@@ -1,24 +1,20 @@
 import "./blogCard.scss"
+import { useState } from "react";
 import Tag from "../tag/Tag"
 import { Link } from "react-router-dom"
 
-
-const tags = [
-    "javascript",
-    "java",
-    "c++",
-    "programming",
-]
-
 function BlogCard({ tags, title, createdAt, text, image, readTime, _id }) {
+
     if (!tags) {
         tags = []
     }
+
     let Tags;
     if (tags.length <= 2) {
         Tags = tags.map((tag, idx) => <Tag key={idx}>{tag}</Tag>)
     } else {
-        Tags = <><Tag>{tags[0]}</Tag><Tag>{tags[1]}</Tag><Tag>+{tags.length - 2}</Tag></>
+        Tags = <><Tag>{tags[0]}</Tag><Tag>{tags[1]}</Tag>
+            <Link to={`/blog/${_id}`}><Tag >+{tags.length - 2}</Tag></Link></>
     }
     return (
         <div className="blogCard">
@@ -28,17 +24,18 @@ function BlogCard({ tags, title, createdAt, text, image, readTime, _id }) {
                         <div className="bcProfile">
                             <img src="https://th.bing.com/th/id/OIP.jryuUgIHWL-1FVD2ww8oWgHaHa?pid=ImgDet&rs=1" alt="" />
                         </div>
-                        <h4 className="txtB-2">
-                            {title}
-                        </h4>
-                        <span className="dot">.</span>
-                        <p className="txtL-3">
-                            {createdAt}
-                        </p>
+                        <div className="bcTopContent">
+                            <h4 className="txtB-2">
+                                {title}
+                            </h4>
+                            <p className="txtL-3">
+                                {createdAt}
+                            </p>
+                        </div>
                     </div>
                     <div className="bcMiddle">
                         <p className="bcBlogContent txtL-3x">
-                            {text}
+                            {text}...
                         </p>
                     </div>
                 </div>
@@ -47,11 +44,10 @@ function BlogCard({ tags, title, createdAt, text, image, readTime, _id }) {
                 </div>
             </div>
             <div className="bcBottom">
-                {
-                    Tags
-                }
-                <span className="dot">.</span>
-                <span className="txtL-3">{readTime}</span>
+                <div className="tags">
+                    {Tags}
+                </div>
+                <span className="txtL-3">{readTime} to</span>
                 <Link to={`/blog/${_id}`} className="btn-sqr ma-1 txt-3">read</Link>
             </div>
         </div >

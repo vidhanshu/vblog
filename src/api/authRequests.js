@@ -1,13 +1,16 @@
 import axios from "axios"
 import { isOnline } from "../utils/utils"
+import { warningCustom } from "../utils/notifications"
+
 /*****************POST*******************/
 export const register = async (data) => {
     if (!isOnline()) {
+        warningCustom("You are offline. Please connect to the internet to register.")
         return { error: "No internet connection" }
     }
     try {
         const res = await axios({
-            url: "https://vblog-backend.herokuapp.com/user/register",
+            url: "/user/register",
             method: "POST",
             data
         })
@@ -21,11 +24,12 @@ export const register = async (data) => {
 
 export const login = async (data) => {
     if (!isOnline()) {
+        warningCustom("You are offline. Please connect to the internet to login.")
         return { error: "No internet connection" }
     }
     try {
         const res = await axios({
-            url: "https://vblog-backend.herokuapp.com/user/login",
+            url: "/user/login",
             method: "POST",
             data
         })
@@ -39,11 +43,12 @@ export const login = async (data) => {
 
 export const logout = async (token) => {
     if (!isOnline()) {
+        warningCustom("You are offline. Please connect to the internet to logout.")
         return { error: "No internet connection" }
     }
     try {
         await axios({
-            url: "https://vblog-backend.herokuapp.com/user/logout",
+            url: "/user/logout",
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`

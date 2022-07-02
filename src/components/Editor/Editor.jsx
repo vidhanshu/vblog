@@ -5,8 +5,8 @@ import { setInputField } from "../../utils/utils"
 import { onKeyPressed } from '../../utils/utils'
 import { getTags, postTag } from '../../api/tagRequest';
 import Suggestions from './sub components/Suggestions'
-import BlogPreview from './sub components/BlogPreview'
-import TagsList from './sub components/TagsList'
+import BlogPreview from '../blog preview/BlogPreview';
+import TagsList from '../tagsList/TagsList'
 import { useGlobalContext } from "../../contexts/globalcontext"
 import { publishHandler } from '../../utils/blogHandlers'
 import { useNavigate } from "react-router-dom"
@@ -66,7 +66,7 @@ function CustomEditor() {
     }
 
     const addTag = () => {
-        if (currentTag === '') {
+        if (currentTag.trim().toLowerCase() === '' || !currentTag.trim().toLowerCase()) {
             infoCustom("Please enter a valid tag");
             return;
         }
@@ -182,7 +182,9 @@ function CustomEditor() {
                             />
                         }
                     </div>
-                    <TagsList tags={tags} removeTag={removeTag} />
+                    <div className="tagsContainer">
+                        <TagsList tags={tags} removeTag={removeTag} />
+                    </div>
                 </div>
                 <BlogPreview Heading={Heading} text={text} file={file} />
             </div >

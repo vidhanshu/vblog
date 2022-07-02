@@ -6,7 +6,7 @@ function Blog() {
         <Layout>
             <Section title="Blog">
                 <div className="blogContainer">
-                    <BlogPreview />
+                    <BlogPreview Heading="Heading!" text="text1" file="f1" key={"a"} />
                     <UserProfile />
                 </div>
             </Section>

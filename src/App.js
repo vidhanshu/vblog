@@ -2,8 +2,8 @@ import React, { createContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { Home, Profile, Write, About, Settings, Blog, Login, NotFound } from './pages'
 import { ToastContainer } from "react-toastify"
-import { Loading, OnOffLine, ProtectedRoute } from "./components"
-import { getAuthUser, getThemeFromLocalStorage } from "./utils/utils"
+import { Loading, ProtectedRoute } from "./components"
+import { getAuthUser, getThemeFromLocalStorage, simpleTimeNDate } from "./utils/utils"
 import { getAllBlogs } from "./api/blogRequests"
 
 export const globalContext = createContext();
@@ -13,21 +13,17 @@ function App() {
   const [dark, setDark] = useState(getThemeFromLocalStorage() || false);
   const [isLoading, setIsLoading] = useState(false);
   const [loggedInAs, setLoggedInAs] = useState(getAuthUser());
-  const [isOnline, setIsOnline] = useState(window.navigator.onLine);
   const [blogs, setBlogs] = useState([]);
-
-  window.ononline = () => {
-    setIsOnline(true);
-  }
 
   useEffect(() => {
     const fetch = async () => {
-      setBlogs(await getAllBlogs());
+      const data = await getAllBlogs();
+      setBlogs(data.map(e => ({ ...e, createdAt: simpleTimeNDate(e.createdAt) })));
     }
     fetch();
-  }, [isOnline])
+  }, [])
 
-  const context_to_be_sent = { blogs, setBlogs, dark, setDark, isLoading, setIsLoading, loggedInAs, setLoggedInAs, isOnline, setIsOnline };
+  const context_to_be_sent = { blogs, setBlogs, dark, setDark, isLoading, setIsLoading, loggedInAs, setLoggedInAs, };
 
   return (
     <div className={`${dark ? 'dark-theme' : 'light-theme'} common`}>
@@ -35,8 +31,6 @@ function App() {
       <ToastContainer theme='dark' />
       {/* loading */}
       {isLoading && <Loading />}
-      {/* online offline */}
-      {!isOnline && <OnOffLine />}
       <Router>
         <globalContext.Provider value={context_to_be_sent}>
           <Routes>

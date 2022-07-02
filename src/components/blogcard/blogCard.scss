@@ -1,5 +1,6 @@
 .blogCard {
     width: fit-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px 0px;
@@ -39,7 +40,6 @@
         .bcTop {
             display: flex;
             align-items: center;
-
             h4 {
                 overflow: hidden;
                 display: -webkit-box;

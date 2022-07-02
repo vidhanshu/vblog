@@ -1,15 +1,15 @@
 import axios from "axios"
-import { infoCustom } from "../utils/notifications";
+import { warningCustom } from "../utils/notifications";
 
 /*********************POST*************************/
 export const publish = async (token, data) => {
     if (!window.navigator.onLine) {
-        return infoCustom("you are offline!");
+        return warningCustom("you are offline!");
     }
     console.log(data)
     try {
         const res = await axios({
-            url: "https://vblog-backend.herokuapp.com/blog/publish",
+            url: "/blog/publish",
             method: "POST",
             data,
             headers: {
@@ -41,11 +41,11 @@ export const decreaseClaps = async () => {
 export const getAllBlogs = async () => {
     const isOnline = window.navigator.onLine;
     if (isOnline) {
-        const response = await axios.get("https://vblog-backend.herokuapp.com/blog/all");
+        const response = await axios.get("/blog/all?sortBy=createdAt:desc&limit=10");
         console.log(response.data);
         return response.data;
     } else {
-        infoCustom("you are offline!");
+        warningCustom("you are offline!");
         return [];
     }
 

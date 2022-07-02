@@ -42,7 +42,6 @@
     .text-preview {
         padding: 10px;
         margin: 10px 0px;
-        height: 100px;
         transition: none !important;
         color: var(--secondary-text-color);
         max-width: 100%;
@@ -61,12 +60,21 @@
         height: fit-content;
         word-wrap: break-word;
     }
+    .textEditor{
+        height: 500px;
+    }
 
-    .tags-list {
+    .addCategories{
+        margin: 10px 0px;
         padding: 10px;
         background-color: var(--blogCard-bg-color);
-        position: relative;
 
+        .tags-list {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: var(--secondary);
+            position: relative;    
+        }
     }
 
     .tag-input-container {
