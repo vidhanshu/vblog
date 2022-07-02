@@ -41,7 +41,7 @@ function UserProfile() {
                     </Link>
                 </div>
             </div>
-            <MediaQuery minWidth={900}>
+            <MediaQuery minWidth={1200}>
                 <div className="profileFavoriteContainer mtb-2">
                     <p className="txtL-2xx">More from vblog.</p>
                     <div className="profileFavorite border">

@@ -2,9 +2,10 @@ import React, { createContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { Home, Profile, Write, About, Settings, Blog, Login, NotFound } from './pages'
 import { ToastContainer } from "react-toastify"
-import { Loading, ProtectedRoute } from "./components"
+import { Loading, ProtectedRoute, Fetching } from "./components"
 import { getAuthUser, getThemeFromLocalStorage, simpleTimeNDate } from "./utils/utils"
-import { getAllBlogs } from "./api/blogRequests"
+import { getAllBlogsList } from "./api/blogRequests"
+import { infoCustom, successCustom } from './utils/notifications'
 
 export const globalContext = createContext();
 
@@ -14,16 +15,32 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [loggedInAs, setLoggedInAs] = useState(getAuthUser());
   const [blogs, setBlogs] = useState([]);
+  const [fetching, setFetching] = useState(false);
+  const [online, setOnline] = useState(true);
+
+  const fetch = async () => {
+    const data = await getAllBlogsList() || [];
+    setBlogs(data.map(e => ({ ...e, createdAt: simpleTimeNDate(e.createdAt) })));
+  }
+
+  window.ononline = () => {
+    setOnline(true);
+    console.log("online")
+    successCustom("You are online");
+    fetch()
+  }
+  window.onoffline = () => {
+    setOnline(false);
+    console.log("offline")
+    infoCustom("You are offline");
+  }
+
 
   useEffect(() => {
-    const fetch = async () => {
-      const data = await getAllBlogs() || [];
-      setBlogs(data.map(e => ({ ...e, createdAt: simpleTimeNDate(e.createdAt) })));
-    }
     fetch();
   }, [])
 
-  const context_to_be_sent = { blogs, setBlogs, dark, setDark, isLoading, setIsLoading, loggedInAs, setLoggedInAs, };
+  const context_to_be_sent = { fetching, setFetching, blogs, setBlogs, dark, setDark, isLoading, setIsLoading, loggedInAs, setLoggedInAs, };
 
   return (
     <div className={`${dark ? 'dark-theme' : 'light-theme'} common`}>
@@ -31,6 +48,8 @@ function App() {
       <ToastContainer theme='dark' />
       {/* loading */}
       {isLoading && <Loading />}
+      {/* fetching */}
+      {fetching && <Fetching />}
       <Router>
         <globalContext.Provider value={context_to_be_sent}>
           <Routes>

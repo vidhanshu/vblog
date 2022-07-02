@@ -2,11 +2,50 @@
     background-color: var(--secondary);
     color: var(--secondary-text-color);
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
+
     img {
         width: 100%;
+        max-width: 400px;
+    }
+
+    @keyframes bleep {
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        20% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        55% {
+            opacity: 0;
+        }
+
+        60% {
+            opacity: 1;
+        }
+        66% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    .bleep {
+        animation: bleep linear 1s infinite;
+        font-size: 30px;
     }
 
     width: 100%;

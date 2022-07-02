@@ -1,0 +1,39 @@
+.fetching-container {
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    height: 100%;
+    z-index: 1100;
+    color:var(--secondary-text-color);
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    transition:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @keyframes opac {
+        0% {
+            display: none;
+        }
+        20% {
+            display: block;
+        }
+    }
+
+    img{
+        max-width: 200px;
+    }
+    .one {
+        animation: opac 1s linear 0s infinite;
+    }
+
+    .two {
+        animation: opac 1s linear .3s infinite;
+    }
+
+    .three {
+        animation: opac 1s linear .6s infinite;
+    }
+}

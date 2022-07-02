@@ -1,10 +1,10 @@
-import { publish } from "../api/blogRequests";
+import { publish, getBlogById } from "../api/blogRequests";
 import { isAllNonEmpty, calcReadTime } from "./utils";
 import { errorCustom, fillAllDetails, successCustom } from "./notifications"
 
-export const publishHandler = async (token, { title, text, tags, readTime = calcReadTime(text) }, setIsLoading, navigate) => {
+export const publishHandler = async (token, { title, text, tags, readTime = calcReadTime(text) }, setIsLoading) => {
     if (!window.navigator.onLine) {
-        return;
+        return errorCustom("You are offline. Please connect to the internet to publish your blog.");
     }
     if (!isAllNonEmpty([title, text])) {
         return fillAllDetails();
@@ -18,15 +18,35 @@ export const publishHandler = async (token, { title, text, tags, readTime = calc
     setIsLoading(true);
 
     const response = await publish(token, data);
-    
+
     if (response.error) {
         console.log(response.error);
         errorCustom(response.error);
     } else {
         successCustom("Blog published successfully");
         setIsLoading(false);
-        navigate("/")
+        window.location.href = "/";
         return response.data;
     }
     console.log(response);
+}
+
+export const getBlogByIdHandler = async (token, id, setFetching) => {
+    if (!window.navigator.onLine) {
+        return errorCustom("You are offline. we cannot fetch the blog");
+    }
+    else if (!id) {
+        return errorCustom("No blog id provided");
+    }
+    else {
+        setFetching(true);
+        const result = await getBlogById(token, id);
+        if (result.error) {
+            setFetching(false);
+            return errorCustom(result.error);
+        } else {
+            setFetching(false);
+            return result.data;
+        }
+    }
 }

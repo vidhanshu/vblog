@@ -3,8 +3,24 @@
     gap: 20px;
 }
 
+.loading-image{
+ max-width:200px;
+}
+
+.recentBlogs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+    grid-gap: 10px;
+}
+
 @media (max-width: 1235px) {
     .containerWithSidebar {
         flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 500px) {
+    .recentBlogs {
+        grid-template-columns: 1fr;
     }
 }

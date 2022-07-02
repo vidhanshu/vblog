@@ -12,6 +12,7 @@
 }
 
 .light-theme {
+    --active-tab: #edecec;
     --hoverText: #e2e2e2;
     --tag-bg-color: #DBDBDB;
     --tag-txt-color: #525252;
@@ -24,13 +25,14 @@
     --secondary-box-shadow-color: rgba(20, 20, 20, 0.4);
     --btn-color: #5d0eac;
     --btn-hover-color: #0c0c0c;
-    --mobile-nav-hover-color:rgb(241, 233, 233);
+    --mobile-nav-hover-color: rgb(241, 233, 233);
     --blogCard-bg-color: rgb(249, 247, 247);
     --blogCard-border: 2px solid rgba(0, 0, 0, 0.075);
     background-color: var(--secondary);
 }
 
 .dark-theme {
+    --active-tab: rgb(50, 50, 148);
     --hoverText: #e2e2e2;
     --tag-bg-color: #232889;
     --tag-txt-color: #e2e2e2;
@@ -43,7 +45,7 @@
     --secondary-box-shadow-color: rgba(255, 255, 255, 0.4);
     --btn-color: #3f46cd;
     --btn-hover-color: rgb(55, 15, 212);
-    --mobile-nav-hover-color:rgb(55, 15, 212);
+    --mobile-nav-hover-color: rgb(55, 15, 212);
     --blogCard-bg-color: rgb(29, 29, 92);
     --blogCard-border: 2px solid rgba(255, 255, 255, 0.121);
     background-color: var(--secondary);
@@ -84,6 +86,7 @@ input {
     display: block;
     background-color: white !important;
     color: black;
+
     &:focus {
         outline: none;
     }
@@ -162,14 +165,16 @@ a {
 
 
 /************************little titles***********************/
-.txt-error{
+.txt-error {
     color: red;
     font-size: 10px;
 }
-.txt-success{
+
+.txt-success {
     color: rgb(0, 156, 70);
     font-size: 10px;
 }
+
 /************************normal titles***********************/
 .txt-1 {
     color: var(--secondary-text-color);
@@ -212,6 +217,7 @@ a {
     font-size: 13px;
     font-weight: normal;
 }
+
 .txt-3x {
     color: var(--secondary-text-color);
     font-size: 15px;
@@ -243,14 +249,17 @@ a {
     color: var(--textColor);
     font-size: 13px;
 }
+
 .txtL-3x {
     color: var(--textColor);
     font-size: 15px;
 }
+
 .txtL-3xx {
     color: var(--textColor);
     font-size: 17px;
 }
+
 .txtL-4 {
     color: var(--textColor);
     font-size: 10px;
@@ -437,10 +446,12 @@ a {
     font-size: 15px;
     border-radius: 3px;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         background-color: rgb(0, 89, 167);
     }
-    &:disabled{
+
+    &:disabled {
         background-color: rgb(0, 89, 167);
     }
 }
@@ -456,7 +467,8 @@ a {
     padding: 5px 10px;
     box-shadow: var(--secondary-box-shadow-color);
     overflow: hidden;
-    &::after{
+
+    &::after {
         content: '';
         position: absolute;
         display: flex;
@@ -465,12 +477,13 @@ a {
         left: 0;
         top: 0;
         width: 0%;
-        height:100%;
+        height: 100%;
         border-radius: 5px;
         background-color: rgba(0, 0, 0, 0.268);
         transition: .2s;
         z-index: 0;
     }
+
     &:hover::after {
         width: 100%;
     }
@@ -507,6 +520,7 @@ a {
     padding: 3px;
     cursor: pointer;
 }
+
 .p-1 {
     padding: 10px;
 }
@@ -514,23 +528,28 @@ a {
 .p-2 {
     padding: 20px;
 }
+
 /************************ text align styles ***********************/
-.txt-center{
+.txt-center {
     text-align: center;
 }
+
 /********************** text color styles ***********************/
-.link{
+.link {
     columns: rgb(0, 0, 255);
     text-decoration: underline;
     cursor: pointer;
 }
+
 /********************** container styles ***********************/
-.flex{
+.flex {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
 }
 
-.full-height{
+.full-height {
     min-height: 100vh;
 }
+
+/********************** animations styles ***********************/

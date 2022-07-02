@@ -1,4 +1,5 @@
 import axios from "axios"
+import {BACKEND_URL} from "../constants/constant"
 
 /*********************POST*************************/
 export const uploadMyAvatar = async () => {

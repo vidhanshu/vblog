@@ -1,13 +1,8 @@
 import "./blogCard.scss"
-import { useState } from "react";
 import Tag from "../tag/Tag"
 import { Link } from "react-router-dom"
 
-function BlogCard({ tags, title, createdAt, text, image, readTime, _id }) {
-
-    if (!tags) {
-        tags = []
-    }
+function BlogCard({ tags = [], title = "", createdAt = "", text = "", image = "", readTime = "", _id = "" }) {
 
     let Tags;
     if (tags.length <= 2) {
@@ -46,9 +41,9 @@ function BlogCard({ tags, title, createdAt, text, image, readTime, _id }) {
             <div className="bcBottom">
                 <div className="tags">
                     {Tags}
+                    <span className="txtL-3">{readTime} to</span>
                 </div>
-                <span className="txtL-3">{readTime} to</span>
-                <Link to={`/blog/${_id}`} className="btn-sqr ma-1 txt-3">read</Link>
+                <Link to={`/blog/${_id}`} className="btn-sqr ma-1 txt-3 btn-read-blog">read</Link>
             </div>
         </div >
     )

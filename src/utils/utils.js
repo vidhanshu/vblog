@@ -59,3 +59,7 @@ export const simpleTimeNDate = (dateString) => {
         return `${day} ${month} ${year} at ${hour}:${min} AM`
     }
 }
+
+export const generateRandomNo = (min = 0, max = 100) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}

@@ -19,7 +19,13 @@
         word-wrap: break-word;
     }
 
+    .blog-heading {
+        font-size: 25px;
+        transition: 0s all;
+    }
+
     .blogPreview-text {
+        text-align: left;
         padding: 10px;
         margin: 10px 0px;
         transition: none !important;
@@ -27,7 +33,7 @@
         max-width: 100%;
         min-width: 100%;
         height: 300px;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
         background: transparent;
         font-size: 20px;
 
@@ -38,6 +44,8 @@
 
     .blogPreview-text {
         height: fit-content;
+        line-height: 30px;
+        font-size: 16px;
         word-wrap: break-word;
     }
 
@@ -60,5 +68,34 @@
                 max-width: 100%;
             }
         }
+    }
+}
+
+.blog-container {
+    background-color: var(--blogCard-bg-color);
+}
+
+.switch-tabs {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    color: var(--secondary-text-color);
+
+    .switch-menu {
+        font-size:25px;
+        margin: 0px 0px 10px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .switch-options {
+        position: absolute;
+        right: 40px;
+        top: 0px;
+        background-color: var(--blogCard-bg-color);
+        padding: 5px;
     }
 }

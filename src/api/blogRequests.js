@@ -1,5 +1,6 @@
 import axios from "axios"
 import { warningCustom } from "../utils/notifications";
+import { BACKEND_URL } from "../constants/constant"
 
 /*********************POST*************************/
 export const publish = async (token, data) => {
@@ -9,7 +10,7 @@ export const publish = async (token, data) => {
     console.log(data)
     try {
         const res = await axios({
-            url: "https://vblog-backend.herokuapp.com/blog/publish",
+            url: `${BACKEND_URL}/blog/publish`,
             method: "POST",
             data,
             headers: {
@@ -41,7 +42,7 @@ export const decreaseClaps = async () => {
 export const getAllBlogs = async () => {
     const isOnline = window.navigator.onLine;
     if (isOnline) {
-        const response = await axios.get("https://vblog-backend.herokuapp.com/blog/all?sortBy=createdAt:desc&limit=10");
+        const response = await axios.get(`${BACKEND_URL}/blog/all?sortBy=createdAt:desc&limit=10`);
         console.log(response.data);
         return response.data;
     } else {
@@ -51,7 +52,41 @@ export const getAllBlogs = async () => {
 
 }
 
-export const getBlogById = async () => {
+export const getAllBlogsList = async () => {
+    const isOnline = window.navigator.onLine;
+    if (isOnline) {
+        const response = await axios.get(`${BACKEND_URL}/blog/all/list?sortBy=createdAt:desc&limit=10`);
+        console.log(response.data);
+        return response.data;
+    } else {
+        warningCustom("you are offline!");
+        return [];
+    }
+
+}
+
+export const getBlogById = async (token, id) => {
+    const isOnline = window.navigator.onLine;
+    if (!isOnline) {
+        warningCustom("you are offline!");
+        return { error: "you are offline!" };
+    } else {
+        try {
+            const response = await axios(
+                {
+                    url: `${BACKEND_URL}/blog/${id}`,
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+            console.log(response.data);
+            return { data: response.data };
+        } catch (err) {
+            return { error: err.message };
+        }
+    }
 
 }
 

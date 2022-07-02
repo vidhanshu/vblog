@@ -9,12 +9,10 @@ import BlogPreview from '../blog preview/BlogPreview';
 import TagsList from '../tagsList/TagsList'
 import { useGlobalContext } from "../../contexts/globalcontext"
 import { publishHandler } from '../../utils/blogHandlers'
-import { useNavigate } from "react-router-dom"
 
 import "./editor.scss"
 
 function CustomEditor() {
-    const navigate = useNavigate();
     const { setIsLoading, loggedInAs } = useGlobalContext();
 
     const [Heading, setHeading] = useState('');
@@ -77,8 +75,8 @@ function CustomEditor() {
         if (tags.length >= 5) {
             return infoCustom("at max 5 tags allowed");
         }
-        setTags([...tags, currentTag]);
-        setCurrentTag(' ');
+        setTags([...tags, currentTag.trim().toLowerCase()]);
+        setCurrentTag('');
         setIsSuggestion(false)
     }
 
@@ -111,7 +109,7 @@ function CustomEditor() {
             text,
             tags,
         }
-        await publishHandler(loggedInAs.token, data, setIsLoading, navigate);
+        await publishHandler(loggedInAs.token, data, setIsLoading);
     }
 
     return (
@@ -168,7 +166,7 @@ function CustomEditor() {
                             onChange={handleCurrentTag}
                             value={currentTag}
                             className="login-input tag-input"
-                            placeholder="Add tags"
+                            placeholder="Add tags..."
                         />
                         <button className="login-btn" onClick={addTag}>Add</button>
                         {
@@ -186,7 +184,7 @@ function CustomEditor() {
                         <TagsList tags={tags} removeTag={removeTag} />
                     </div>
                 </div>
-                <BlogPreview Heading={Heading} text={text} file={file} />
+                <BlogPreview title={Heading} text={text} file={file} />
             </div >
         </>
     )

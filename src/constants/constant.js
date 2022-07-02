@@ -21,3 +21,6 @@ export const MONTHS = {
     11: "Nov",
     12: "Dec"
 }
+
+export const BACKEND_URL = "https://vblog-backend.herokuapp.com";
+// export const BACKEND_URL = "http://localhost:4000";

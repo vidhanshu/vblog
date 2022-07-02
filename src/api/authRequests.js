@@ -1,7 +1,7 @@
 import axios from "axios"
 import { isOnline } from "../utils/utils"
 import { warningCustom } from "../utils/notifications"
-
+import { BACKEND_URL } from "../constants/constant"
 /*****************POST*******************/
 export const register = async (data) => {
     if (!isOnline()) {
@@ -10,7 +10,7 @@ export const register = async (data) => {
     }
     try {
         const res = await axios({
-            url: "https://vblog-backend.herokuapp.com/user/register",
+            url: `${BACKEND_URL}/user/register`,
             method: "POST",
             data
         })
@@ -29,7 +29,7 @@ export const login = async (data) => {
     }
     try {
         const res = await axios({
-            url: "https://vblog-backend.herokuapp.com/user/login",
+            url: `${BACKEND_URL}/user/login`,
             method: "POST",
             data
         })
@@ -48,7 +48,7 @@ export const logout = async (token) => {
     }
     try {
         await axios({
-            url: "https://vblog-backend.herokuapp.com/user/logout",
+            url: `${BACKEND_URL}/user/logout`,
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`
