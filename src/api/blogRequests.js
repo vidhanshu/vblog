@@ -9,7 +9,7 @@ export const publish = async (token, data) => {
     console.log(data)
     try {
         const res = await axios({
-            url: "/blog/publish",
+            url: "https://vblog-backend.herokuapp.com/blog/publish",
             method: "POST",
             data,
             headers: {
@@ -41,7 +41,7 @@ export const decreaseClaps = async () => {
 export const getAllBlogs = async () => {
     const isOnline = window.navigator.onLine;
     if (isOnline) {
-        const response = await axios.get("/blog/all?sortBy=createdAt:desc&limit=10");
+        const response = await axios.get("https://vblog-backend.herokuapp.com/blog/all?sortBy=createdAt:desc&limit=10");
         console.log(response.data);
         return response.data;
     } else {

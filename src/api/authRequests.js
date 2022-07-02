@@ -10,7 +10,7 @@ export const register = async (data) => {
     }
     try {
         const res = await axios({
-            url: "/user/register",
+            url: "https://vblog-backend.herokuapp.com/user/register",
             method: "POST",
             data
         })
@@ -29,7 +29,7 @@ export const login = async (data) => {
     }
     try {
         const res = await axios({
-            url: "/user/login",
+            url: "https://vblog-backend.herokuapp.com/user/login",
             method: "POST",
             data
         })
@@ -48,7 +48,7 @@ export const logout = async (token) => {
     }
     try {
         await axios({
-            url: "/user/logout",
+            url: "https://vblog-backend.herokuapp.com/user/logout",
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`

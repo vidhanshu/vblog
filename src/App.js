@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     const fetch = async () => {
-      const data = await getAllBlogs();
+      const data = await getAllBlogs() || [];
       setBlogs(data.map(e => ({ ...e, createdAt: simpleTimeNDate(e.createdAt) })));
     }
     fetch();
