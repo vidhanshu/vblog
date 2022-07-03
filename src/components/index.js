@@ -16,4 +16,5 @@ import Loading from "./loading/Loading"
 import ProtectedRoute from "./protectedroute/ProtectedRoute"
 import TagWCross from "./tag with cross/TagWcross"
 import Fetching from "./fetching/Fetching"
-export { Fetching, TagWCross, ProtectedRoute, Loading, AuthForm, Divider, Footer, Header, Layout, Section, BlogCard, Sidebar, FavBlog, CustomEditor, Card, EditProfile, BlogPreview, UserProfile };
+import ActualBlogPreview from "./blog/ActualBlogPreview"
+export { ActualBlogPreview, Fetching, TagWCross, ProtectedRoute, Loading, AuthForm, Divider, Footer, Header, Layout, Section, BlogCard, Sidebar, FavBlog, CustomEditor, Card, EditProfile, BlogPreview, UserProfile };

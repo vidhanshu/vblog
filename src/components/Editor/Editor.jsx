@@ -60,7 +60,7 @@ function CustomEditor() {
             setIsSuggestion(true);
         }
         filterTheSuggestions(cat);
-        setCurrentTag(cat);
+        setCurrentTag(evt.target.value.toLowerCase());
     }
 
     const addTag = () => {
@@ -75,7 +75,7 @@ function CustomEditor() {
         if (tags.length >= 5) {
             return infoCustom("at max 5 tags allowed");
         }
-        setTags([...tags, currentTag.trim().toLowerCase()]);
+        setTags([...tags, currentTag.toLowerCase()]);
         setCurrentTag('');
         setIsSuggestion(false)
     }

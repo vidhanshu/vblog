@@ -71,6 +71,7 @@ export const getBlogById = async (token, id) => {
         warningCustom("you are offline!");
         return { error: "you are offline!" };
     } else {
+        console.log(token)
         try {
             const response = await axios(
                 {

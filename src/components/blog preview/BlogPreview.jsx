@@ -15,7 +15,6 @@ function BlogPreview({ title = "trying to fetch...", image, text = "trying to fe
     const currentLetterSpacing = activeLetterSpacing === 0 ? "0px" : activeLetterSpacing === 1 ? "1px" : "2px";
 
 
-
     return (
         <>
             <div>

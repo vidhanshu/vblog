@@ -1,5 +1,5 @@
 import "./blog.scss"
-import { Layout, Section, BlogPreview, UserProfile } from "../../components"
+import { Layout, Section, ActualBlogPreview, UserProfile } from "../../components"
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 import { getBlogByIdHandler } from "../../utils/blogHandlers"
@@ -13,7 +13,7 @@ function Blog() {
     useEffect(() => {
         const fetch = async () => {
             const blog = await getBlogByIdHandler(loggedInAs.token, id, setFetching);
-            setBlog({ ...blog.data, image: blog.image});
+            setBlog({ ...blog.data, image: blog.image });
             console.log()
         }
         fetch();
@@ -23,7 +23,7 @@ function Blog() {
         <Layout>
             <Section title="Blog">
                 <div className="blogContainer">
-                    <BlogPreview {...blog} />
+                    <ActualBlogPreview {...blog} />
                     <UserProfile />
                 </div>
             </Section>

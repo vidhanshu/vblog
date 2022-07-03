@@ -29,7 +29,7 @@ export const setThemeToLocalStorage = (val) => window.localStorage.setItem("them
 export const calcReadTime = (txt) => {
     const noOfWords = txt.split(" ").length;
     console.log(noOfWords);
-    const noOfMinutes = Math.round(noOfWords / 200) + " min";
+    const noOfMinutes = Math.round(noOfWords / 200) + " m";
     return noOfMinutes;
 }
 
