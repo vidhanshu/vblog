@@ -13,6 +13,7 @@ export const globalContext = createContext();
 function App() {
   const [dark, setDark] = useState(getThemeFromLocalStorage() || false);
   const [isLoading, setIsLoading] = useState(false);
+  const [userProfile, setUserProfile] = useState();
   const [loggedInAs, setLoggedInAs] = useState(getAuthUser());
   const [blogs, setBlogs] = useState([]);
   const [fetching, setFetching] = useState(false);
@@ -29,6 +30,7 @@ function App() {
     successCustom("You are online");
     fetch()
   }
+  
   window.onoffline = () => {
     setOnline(false);
     console.log("offline")
@@ -40,7 +42,14 @@ function App() {
     fetch();
   }, [])
 
-  const context_to_be_sent = { fetching, setFetching, blogs, setBlogs, dark, setDark, isLoading, setIsLoading, loggedInAs, setLoggedInAs, };
+  const context_to_be_sent = {
+    userProfile, setUserProfile,
+    fetching, setFetching,
+    blogs, setBlogs,
+    dark, setDark,
+    isLoading, setIsLoading,
+    loggedInAs, setLoggedInAs,
+  };
 
   return (
     <div className={`${dark ? 'dark-theme' : 'light-theme'} common`}>

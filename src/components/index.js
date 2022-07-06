@@ -17,4 +17,5 @@ import ProtectedRoute from "./protectedroute/ProtectedRoute"
 import TagWCross from "./tag with cross/TagWcross"
 import Fetching from "./fetching/Fetching"
 import ActualBlogPreview from "./blog/ActualBlogPreview"
-export { ActualBlogPreview, Fetching, TagWCross, ProtectedRoute, Loading, AuthForm, Divider, Footer, Header, Layout, Section, BlogCard, Sidebar, FavBlog, CustomEditor, Card, EditProfile, BlogPreview, UserProfile };
+import ErrorBoundary from "./errorBoundary/ErrorBoundary"
+export { ErrorBoundary, ActualBlogPreview, Fetching, TagWCross, ProtectedRoute, Loading, AuthForm, Divider, Footer, Header, Layout, Section, BlogCard, Sidebar, FavBlog, CustomEditor, Card, EditProfile, BlogPreview, UserProfile };
