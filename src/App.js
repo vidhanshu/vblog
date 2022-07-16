@@ -1,43 +1,45 @@
-import React, { createContext, useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { Home, Profile, Write, About, Settings, Blog, Login, NotFound } from './pages'
-import { ToastContainer } from "react-toastify"
-import { Loading, ProtectedRoute, Fetching } from "./components"
-import { getAuthUser, getThemeFromLocalStorage, simpleTimeNDate } from "./utils/utils"
-import { getAllBlogsList } from "./api/blogRequests"
-import { infoCustom, successCustom } from './utils/notifications'
+import React, { createContext, useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { getAllBlogsList } from "./api/blogRequests";
+import { Fetching, Loading, ProtectedRoute } from "./components";
+import { About, Blog, Home, Login, NotFound, Profile, Settings, Write } from "./pages";
+import { infoCustom, successCustom } from "./utils/notifications";
+import { getAuthUser, getThemeFromLocalStorage, simpleTimeNDate } from "./utils/utils";
 
 export const globalContext = createContext();
 
 
 function App() {
+  //dark mode state - taking from localStorage
   const [dark, setDark] = useState(getThemeFromLocalStorage() || false);
+  //loading state - throughout the app
   const [isLoading, setIsLoading] = useState(false);
-  const [userProfile, setUserProfile] = useState();
+  //user state - throughout the app
+  const [userProfile, setUserProfile] = useState({});
+  //login user state - throughout the app
   const [loggedInAs, setLoggedInAs] = useState(getAuthUser());
+  //blog list state -throughout home page
   const [blogs, setBlogs] = useState([]);
+  //fetching state- indicates fetching of blogs
   const [fetching, setFetching] = useState(false);
-  const [online, setOnline] = useState(true);
 
   const fetch = async () => {
     const data = await getAllBlogsList() || [];
     setBlogs(data.map(e => ({ ...e, createdAt: simpleTimeNDate(e.createdAt) })));
   }
 
+  //for automatic fetching of blogs on online
   window.ononline = () => {
-    setOnline(true);
-    console.log("online")
     successCustom("You are online");
     fetch()
   }
-  
+
   window.onoffline = () => {
-    setOnline(false);
-    console.log("offline")
     infoCustom("You are offline");
   }
 
-
+  //first time fetching of blogs
   useEffect(() => {
     fetch();
   }, [])

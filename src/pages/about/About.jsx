@@ -1,6 +1,7 @@
-import "./about.scss"
-import { Layout, Section, Card } from "../../components"
-import {useNavigate} from "react-router-dom"
+import "./about.scss";
+import { useNavigate } from "react-router-dom";
+import { Card, Layout, Section } from "../../components";
+
 function About() {
     const navigate = useNavigate();
     return (
@@ -36,7 +37,7 @@ function About() {
                         </Card>
                     </div>
                 </div>
-                <button className="circular-btn mtb-1" onClick={()=>navigate('/blog')}>Write a blog</button>
+                <button className="circular-btn mtb-1" onClick={()=>navigate('/write')}>Write a blog</button>
             </Section>
         </Layout>
     )

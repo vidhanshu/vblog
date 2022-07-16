@@ -1,6 +1,6 @@
-import { publish, getBlogById, getBlogImageById } from "../api/blogRequests";
-import { isAllNonEmpty, calcReadTime } from "./utils";
-import { errorCustom, fillAllDetails, successCustom } from "./notifications"
+import { getBlogById, getBlogImageById, publish } from "../api/blogRequests";
+import { errorCustom, fillAllDetails, successCustom } from "./notifications";
+import { calcReadTime, isAllNonEmpty } from "./utils";
 
 export const publishHandler = async (token, { title, text, tags, readTime = calcReadTime(text) }, setIsLoading) => {
     if (!window.navigator.onLine) {
@@ -49,6 +49,24 @@ export const getBlogByIdHandler = async (token, id, setFetching) => {
         } else {
             setFetching(false);
             return { data: result.data, image: image.data };
+        }
+    }
+}
+
+export const getBlogImageByIdHandler = async (id) => {
+    if (!window.navigator.onLine) {
+        return errorCustom("You are offline. we cannot fetch the blog");
+    }
+    else if (!id) {
+        return errorCustom("No blog id provided");
+    }
+    else {
+        console.log("fetching blog");
+        const result = await getBlogImageById(id);
+        if (result.error) {
+            return errorCustom(result.error);
+        } else {
+            return result.data;
         }
     }
 }

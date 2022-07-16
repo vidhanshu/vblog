@@ -1,11 +1,11 @@
-import axios from "axios"
-import { BACKEND_URL } from "../constants/constant"
+import axios from "axios";
+import { BACKEND_URL } from "../constants/constant";
 
 /*********************POST*************************/
 export const uploadMyAvatar = async (token, file) => {
     const formData = new FormData();
     formData.append("avatar", file);
-    console.log(formData);
+    console.log(formData)
     try {
         const res = await axios({
             url: `${BACKEND_URL}/user/me/avatar`,

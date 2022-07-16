@@ -1,10 +1,8 @@
 .blogCard {
-    width: fit-content;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px 0px;
-    background-color: transparent;
     background-color: var(--blogCard-bg-color);
     border: var(--blogCard-border);
     box-shadow: var(--blogCard-shadow);
@@ -14,19 +12,25 @@
 
     .bcWrapper {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         gap: 20px;
-
-        @media (max-width:700px) {
+        @media (max-width: 700px) {
             flex-direction: column-reverse;
         }
 
+        .timeToRead {
+            background-color: var(--tag-bg-color);
+            width: fit-content;
+            padding: 3px;
+            border-radius: 3px;
+        }
         .bcBlogImage {
             display: flex;
             justify-content: center;
             align-items: flex-end;
 
-            @media (max-width:700px) {
+            @media (max-width: 700px) {
                 justify-content: flex-start;
             }
 
@@ -37,7 +41,7 @@
             }
         }
 
-        .bcTopContent{
+        .bcTopContent {
             display: flex;
             gap: 10px;
             justify-content: space-between;
@@ -58,7 +62,6 @@
                 -webkit-box-orient: vertical;
                 width: fit-content;
             }
-
             p {
                 min-width: fit-content;
             }
@@ -95,7 +98,7 @@
     }
 
     .bcBottom {
-        padding: 2px;        
+        padding: 2px;
         margin: 10px 0px;
         display: flex;
         align-items: center;
@@ -108,9 +111,9 @@
             flex-direction: column;
             align-items: start;
             justify-content: start;
-            a{
+            a {
                 max-width: 100%;
-                margin:20px 0 0 0;
+                margin: 20px 0 0 0;
             }
         }
     }

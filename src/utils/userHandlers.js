@@ -1,5 +1,5 @@
 import { getMyProfile, updateMe, uploadMyAvatar } from "../api/userRequests";
-import { warningCustom, failureCustom } from "./notifications"
+import { failureCustom, warningCustom } from "./notifications";
 
 /**********************|GET|******************************/
 export const getMeHandler = async (token, setIsLoading) => {

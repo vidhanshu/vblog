@@ -9,6 +9,7 @@
 
 .common {
     --padding: 50px;
+    --primary: #000000;
 }
 
 .light-theme {
@@ -19,7 +20,6 @@
     --textColor: #525252;
     --secondary-text-color: rgb(0, 0, 0);
     --logoSize: 20px;
-    --primary: #000000;
     --borderColor: #DBDBDB;
     --secondary: white;
     --secondary-box-shadow-color: rgba(20, 20, 20, 0.4);
@@ -39,7 +39,6 @@
     --textColor: #d4d3d3;
     --secondary-text-color: rgb(255, 255, 255);
     --logoSize: 20px;
-    --primary: #000000;
     --borderColor: #656565;
     --secondary: rgb(0, 23, 62);
     --secondary-box-shadow-color: rgba(255, 255, 255, 0.4);

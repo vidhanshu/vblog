@@ -1,6 +1,6 @@
-import "./blogCard.scss"
-import Tag from "../tag/Tag"
-import { Link } from "react-router-dom"
+import "./blogCard.scss";
+import Tag from "../tag/Tag";
+import { Link } from "react-router-dom";
 
 function BlogCard({ tags = [], title = "", createdAt = "", text = "", image = "", readTime = "", _id = "" }) {
 
@@ -34,14 +34,11 @@ function BlogCard({ tags = [], title = "", createdAt = "", text = "", image = ""
                         </p>
                     </div>
                 </div>
-                <div className="bcBlogImage">
-                    <img src={image ? image.data : "https://media.istockphoto.com/vectors/error-document-icon-vector-id1062127004?k=6&m=1062127004&s=612x612&w=0&h=94D4dEDZzXuNQ0rhw7yftXb259wNpjDMoNmcl9KvUD8="} alt="" />
-                </div>
+                <span className="txtL-3 timeToRead">{readTime} to read</span>
             </div>
             <div className="bcBottom">
                 <div className="tags">
                     {Tags}
-                    <span className="txtL-3">{readTime} to</span>
                 </div>
                 <Link to={`/blog/${_id}`} className="btn-sqr ma-1 txt-3 btn-read-blog">read</Link>
             </div>
