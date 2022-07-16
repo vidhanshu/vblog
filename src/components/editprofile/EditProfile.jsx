@@ -1,11 +1,12 @@
-import { useState } from "react"
-import "./editProfile.scss"
-import { AiOutlineUpload, AiOutlineEdit } from "react-icons/ai"
+import "./editProfile.scss";
 import Divider from "../divider/Divider";
-import { uploadAvatarHandler, updateMeHandler } from "../../utils/userHandlers"
-import { getAuthUser } from "../../utils/utils";
-import { BACKEND_URL } from "../../constants/constant"
+import { useState } from "react";
+import { AiOutlineEdit, AiOutlineUpload } from "react-icons/ai";
+import { BACKEND_URL } from "../../constants/constant";
 import { useGlobalContext } from "../../contexts/globalcontext";
+import { updateMeHandler, uploadAvatarHandler } from "../../utils/userHandlers";
+import { getAuthUser } from "../../utils/utils";
+
 function EditProfile() {
 
     const auth = getAuthUser();
@@ -80,7 +81,7 @@ function EditProfile() {
 
                     }} />
                 </div>
-                <button style={{ fontSize: 22,maxWidth:"300px" }} className="btn-sqr mtb-1"
+                <button style={{ fontSize: 22, maxWidth: "300px" }} className="btn-sqr mtb-1"
                     onClick={callUploadAvatarHandler}
                 >
                     <AiOutlineUpload />
@@ -120,22 +121,22 @@ function EditProfile() {
                 <p className="txtB-2">Social media details.</p>
                 <div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Facebook" onChange={e => setSocialLinks((cur) => ({ ...cur, facebook: e.target.value }))} />
+                        <input type="url" className="input" placeholder="Facebook" onChange={e => setSocialLinks((cur) => ({ ...cur, facebook: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Instagram" onChange={e => setSocialLinks((cur) => ({ ...cur, instagram: e.target.value }))} />
+                        <input type="url" className="input" placeholder="Instagram" onChange={e => setSocialLinks((cur) => ({ ...cur, instagram: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Reddit" onChange={e => setSocialLinks((cur) => ({ ...cur, reddit: e.target.value }))} />
+                        <input type="url" className="input" placeholder="Reddit" onChange={e => setSocialLinks((cur) => ({ ...cur, reddit: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Twitch" onChange={e => setSocialLinks((cur) => ({ ...cur, twitch: e.target.value }))} />
+                        <input type="url" className="input" placeholder="Twitch" onChange={e => setSocialLinks((cur) => ({ ...cur, twitch: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Twitter" onChange={e => setSocialLinks((cur) => ({ ...cur, twitter: e.target.value }))} />
+                        <input type="url" className="input" placeholder="Twitter" onChange={e => setSocialLinks((cur) => ({ ...cur, twitter: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Linkedin" onChange={e => setSocialLinks((cur) => ({ ...cur, linkedin: e.target.value }))} />
+                        <input type="url" className="input" placeholder="Linkedin" onChange={e => setSocialLinks((cur) => ({ ...cur, linkedin: e.target.value }))} />
                     </div>
                     <button style={{ fontSize: 22 }} className="btn-sqr mtb-1" onClick={() => updateHandler('socialLinks')}>
                         <AiOutlineUpload />
