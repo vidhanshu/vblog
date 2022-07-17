@@ -10,9 +10,11 @@ import { getAuthUser } from "../../utils/utils";
 function EditProfile() {
 
     const auth = getAuthUser();
+    const { setIsLoading } = useGlobalContext();
     const { userProfile } = useGlobalContext();
+    console.log(userProfile.socialLinks)
     const [file, setFile] = useState('');
-    const [preview, setPreview] = useState(`${BACKEND_URL}/user/62d31cd377032383f080bcae/avatar` || 'https://th.bing.com/th/id/OIP.qw42y3S9KyR2Wn9JVAWArgHaHa?pid=ImgDet&rs=1')
+    const [preview, setPreview] = useState(`${BACKEND_URL}/user/${auth.user._id}/avatar`)
     const [username, setUsername] = useState(userProfile.username);
     const [email, setEmail] = useState(userProfile.email);
     const [password, setPassword] = useState('');
@@ -27,15 +29,15 @@ function EditProfile() {
     })
 
     const callUploadAvatarHandler = async () => {
-        console.log(auth)
-        const result = await uploadAvatarHandler(auth.token, file);
+        setIsLoading(true);
+        const result = await uploadAvatarHandler(auth.token, file, setIsLoading);
         if (result?.data) {
             console.log(result)
         }
     }
     const callUpdateMeHandler = async (data) => {
-        const result = await updateMeHandler(auth.token, data);
-        console.log(result);
+        setIsLoading(true);
+        await updateMeHandler(auth.token, data,setIsLoading);
     }
     const updateHandler = async (e) => {
         switch (e) {
@@ -78,7 +80,6 @@ function EditProfile() {
                             setPreview(event.target.result);
                             console.log("some thing")
                         }
-
                     }} />
                 </div>
                 <button style={{ fontSize: 22, maxWidth: "300px" }} className="btn-sqr mtb-1"
@@ -121,22 +122,22 @@ function EditProfile() {
                 <p className="txtB-2">Social media details.</p>
                 <div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Facebook" onChange={e => setSocialLinks((cur) => ({ ...cur, facebook: e.target.value }))} />
+                        <input value={socialLinks.facebook} type={"url"} className="input" placeholder="Facebook" onChange={e => setSocialLinks((cur) => ({ ...cur, facebook: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Instagram" onChange={e => setSocialLinks((cur) => ({ ...cur, instagram: e.target.value }))} />
+                        <input value={socialLinks.instagram} type={"url"} className="input" placeholder="Instagram" onChange={e => setSocialLinks((cur) => ({ ...cur, instagram: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Reddit" onChange={e => setSocialLinks((cur) => ({ ...cur, reddit: e.target.value }))} />
+                        <input value={socialLinks.reddit} type={"url"} className="input" placeholder="Reddit" onChange={e => setSocialLinks((cur) => ({ ...cur, reddit: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Twitch" onChange={e => setSocialLinks((cur) => ({ ...cur, twitch: e.target.value }))} />
+                        <input value={socialLinks.twitch} type={"url"} className="input" placeholder="Twitch" onChange={e => setSocialLinks((cur) => ({ ...cur, twitch: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Twitter" onChange={e => setSocialLinks((cur) => ({ ...cur, twitter: e.target.value }))} />
+                        <input value={socialLinks.twitter} type={"url"} className="input" placeholder="Twitter" onChange={e => setSocialLinks((cur) => ({ ...cur, twitter: e.target.value }))} />
                     </div>
                     <div className="updateField">
-                        <input type={"url"} className="input" placeholder="Linkedin" onChange={e => setSocialLinks((cur) => ({ ...cur, linkedin: e.target.value }))} />
+                        <input value={socialLinks.linkedin} type={"url"} className="input" placeholder="Linkedin" onChange={e => setSocialLinks((cur) => ({ ...cur, linkedin: e.target.value }))} />
                     </div>
                     <button style={{ fontSize: 22 }} className="btn-sqr mtb-1" onClick={() => updateHandler('socialLinks')}>
                         <AiOutlineUpload />

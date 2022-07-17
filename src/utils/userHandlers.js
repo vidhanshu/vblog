@@ -1,5 +1,5 @@
 import { getMyProfile, updateMe, uploadMyAvatar } from "../api/userRequests";
-import { failureCustom, warningCustom } from "./notifications";
+import { failureCustom, successCustom, warningCustom } from "./notifications";
 
 /**********************|GET|******************************/
 export const getMeHandler = async (token, setIsLoading) => {
@@ -18,7 +18,7 @@ export const getMeHandler = async (token, setIsLoading) => {
 
 
 /**********************|POST|******************************/
-export const uploadAvatarHandler = async (token, file) => {
+export const uploadAvatarHandler = async (token, file, setIsLoading) => {
     if (!window.navigator.onLine) {
         return warningCustom("you are offline!");
     }
@@ -26,14 +26,18 @@ export const uploadAvatarHandler = async (token, file) => {
     const result = await uploadMyAvatar(token, file);
 
     if (result.error) {
+        setIsLoading(false)
         return failureCustom(`Something went wrong! ${result.error}`);
     }
+    successCustom("Avatar updated successfully!");
+    setIsLoading(false)
+    window.location.reload();
     return { data: result.data }
 }
 
 
 /**********************|POST|******************************/
-export const updateMeHandler = async (token, data) => {
+export const updateMeHandler = async (token, data, setIsLoading) => {
     if (!window.navigator.onLine) {
         return warningCustom("you are offline!");
     }
@@ -41,8 +45,10 @@ export const updateMeHandler = async (token, data) => {
     const result = await updateMe(token, data);
 
     if (result.error) {
+        setIsLoading(false);
         return failureCustom(`Something went wrong! ${result.error}`);
     }
+    setIsLoading(false);
     window.location.href = "/profile";
     return { data: result.data }
 }

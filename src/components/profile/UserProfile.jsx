@@ -1,20 +1,20 @@
-import { useState, useEffect } from "react"
-import { BACKEND_URL } from "../../constants/constant"
-import "./userProfile.scss"
-import { BsTwitch, BsFacebook, BsInstagram, BsTwitter, BsReddit, BsLinkedin } from "react-icons/bs"
-import { Link } from "react-router-dom"
-import { FavBlog, Divider } from ".."
-import MediaQuery from "react-responsive"
-import { getAuthUser } from "../../utils/utils"
-import { useGlobalContext } from "../../contexts/globalcontext"
-import { getMeHandler } from "../../utils/userHandlers"
+import "./userProfile.scss";
+import MediaQuery from "react-responsive";
+import { useEffect, useState } from "react";
+import { BsFacebook, BsInstagram, BsLinkedin, BsReddit, BsTwitch, BsTwitter } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { Divider, FavBlog } from "..";
+import { BACKEND_URL } from "../../constants/constant";
+import { useGlobalContext } from "../../contexts/globalcontext";
+import { getMeHandler } from "../../utils/userHandlers";
+import { getAuthUser } from "../../utils/utils";
 
 function UserProfile() {
     const auth = getAuthUser();
 
     const { setIsLoading, userProfile, setUserProfile } = useGlobalContext();
 
-    const [preview, setPreview] = useState(`${BACKEND_URL}/user/62be06df2f0f818fdb936919/avatar` || 'https://th.bing.com/th/id/OIP.qw42y3S9KyR2Wn9JVAWArgHaHa?pid=ImgDet&rs=1')
+    const [preview, setPreview] = useState(`${BACKEND_URL}/user/${auth?.user?._id}/avatar` || 'https://th.bing.com/th/id/OIP.qw42y3S9KyR2Wn9JVAWArgHaHa?pid=ImgDet&rs=1')
 
     useEffect(() => {
         setIsLoading(true);
