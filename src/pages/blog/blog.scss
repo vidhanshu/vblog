@@ -1,6 +1,7 @@
 .blogContainer {
-    display: flex;
-    @media (max-width: 1200px) {
-        flex-direction: column-reverse;
-    }
+  display: flex;
+  gap: 1rem;
+  @media (max-width: 1200px) {
+    flex-direction: column-reverse;
+  }
 }

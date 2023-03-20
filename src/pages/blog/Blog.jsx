@@ -1,10 +1,12 @@
 import "./blog.scss"
-import { Layout, Section, ActualBlogPreview, UserProfile } from "../../components"
-import { useParams } from "react-router-dom"
-import { useState } from "react"
+
+import { ActualBlogPreview, Layout, Section, UserProfile } from "../../components"
+
 import { getBlogByIdHandler } from "../../utils/blogHandlers"
 import { useEffect } from "react"
 import { useGlobalContext } from "../../contexts/globalcontext"
+import { useParams } from "react-router-dom"
+import { useState } from "react"
 
 function Blog() {
     const [blog, setBlog] = useState({})
@@ -17,7 +19,7 @@ function Blog() {
             console.log()
         }
         fetch();
-    }, [])
+    }, [id, loggedInAs.token, setFetching])
 
     return (
         <Layout>

@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
+
 import Divider from '../../divider/Divider'
-import { useGlobalContext } from "../../../contexts/globalcontext"
 import { onKeyPressed } from "../../../utils/utils"
+import { useGlobalContext } from "../../../contexts/globalcontext"
 
 function Comments({ commentsData = [], setCommentsData }) {
 
     const { loggedInAs } = useGlobalContext();
     const [currentComment, setCurrentComment] = useState('');
     const handleComment = () => {
+        if (currentComment === "") {
+            return alert("Please enter something");
+        }
         setCommentsData([...commentsData, { user: loggedInAs.user.username, comment: currentComment }]);
         setCurrentComment('');
     }

@@ -1,6 +1,6 @@
-import React from 'react'
 import "./switchtabs.scss"
-import { useState } from "react";
+
+import React from 'react'
 
 function SwitchTabs({ options = ["tab1", "tab2", "tab3"], active = 0, setActive }) {
 

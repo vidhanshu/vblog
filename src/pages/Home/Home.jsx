@@ -1,5 +1,7 @@
 import './home.scss'
-import { Layout, Section, Header, BlogCard, Sidebar } from '../../components'
+
+import { BlogCard, Header, Layout, Section, Sidebar } from '../../components'
+
 import { useGlobalContext } from '../../contexts/globalcontext';
 
 function Home() {
@@ -12,7 +14,7 @@ function Home() {
       <div className='containerWithSidebar'>
         <Section title="Recent Blogs">
           <div className="recentBlogs">
-            {blogs.length
+            {blogs
               ? blogs.map((blog) => <BlogCard key={blog._id} {...blog} />)
               : <div className="txtL-2">
                 <img className='loading-image' src="https://orig00.deviantart.net/34de/f/2012/204/b/c/grass_block_by_barakaldo-d58bi3u.gif" alt="" />

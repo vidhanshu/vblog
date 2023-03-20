@@ -1,4 +1,7 @@
-.clapAndComment {
+.actual_blog_preview_container {
+  flex: 1;
+
+  .clapAndComment {
     margin: 10px 0px;
     display: flex;
     font-size: 25px;
@@ -7,59 +10,59 @@
     padding: 5px;
 
     .like {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 10px;
-        flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      flex-direction: column;
 
-        .fill-heart {
-            color: red;
-            margin: 0;
-        }
+      .fill-heart {
+        color: red;
+        margin: 0;
+      }
 
-        .empty-heart {
-            color: #ccc;
-        }
+      .empty-heart {
+        color: #ccc;
+      }
     }
 
     .comment {
-        color: #ccc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+      color: #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
 
-        .fill-comment {
-            color: rgb(0, 145, 255);
-        }
+      .fill-comment {
+        color: rgb(0, 145, 255);
+      }
     }
 
     .count {
-        color: #ccc;
-        font-size: 10px;
+      color: #ccc;
+      font-size: 10px;
     }
-
-}
-.comments-container {
+  }
+  .comments-container {
     color: var(--secondary-text-color);
-    .single-comment{
-        background-color: var(--blogCard-bg-color);
-        padding: 5px;
-        margin: 10px 0px;
+    .single-comment {
+      background-color: var(--blogCard-bg-color);
+      padding: 5px;
+      margin: 10px 0px;
     }
-    .user{
-        color: red;
+    .user {
+      color: red;
     }
-    .enter-comment{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .input{
-            font-size: 15px;
-            margin-right: 5px;
-            padding: 8px;
-            flex: 3;
-        }
+    .enter-comment {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .input {
+        font-size: 15px;
+        margin-right: 5px;
+        padding: 8px;
+        flex: 3;
+      }
     }
+  }
 }
